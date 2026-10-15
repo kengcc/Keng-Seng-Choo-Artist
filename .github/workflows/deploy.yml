@@ -27,7 +27,7 @@ jobs:
         with:
           node-version: 24
       - name: Check links and content
-        run: npm run validate
+        run: npm run validate && npm run validate:seo
   deploy:
     needs: build
     runs-on: ubuntu-latest

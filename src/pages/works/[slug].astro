@@ -1,0 +1,25 @@
+---
+import Base from '../../layouts/Base.astro';
+import works from '../../data/artworks.json';
+import { href } from '../../lib/site';
+import { artworkPath } from '../../lib/seo';
+export function getStaticPaths() {
+  return works.map(work => ({ params: { slug: artworkPath(work).split('/')[2] }, props: { work } }));
+}
+const { work } = Astro.props;
+const canonical = Astro.site ? new URL(href(artworkPath(work)), Astro.site) : undefined;
+const personId = Astro.site ? `${new URL(href('/'), Astro.site).href}#artist` : undefined;
+const artworkId = canonical ? `${canonical.href}#artwork` : undefined;
+const entity = artworkId ? { '@id': artworkId } : undefined;
+const extra = canonical ? [{ '@type':'VisualArtwork', '@id':artworkId, name:work.descriptiveLabel,
+  creator:{'@id':personId}, artform:'Painting', url:canonical.href,
+  image:{'@type':'ImageObject',contentUrl:new URL(href(work.image),Astro.site).href,width:work.width,height:work.height},
+  ...(work.medium ? {artMedium:work.medium} : {}),
+  ...(work.year ? {dateCreated:String(work.year)} : {}),
+}] : [];
+---
+<Base title={`${work.descriptiveLabel} — Painting`} description={`${work.descriptiveLabel} by Malaysian artist Keng Seng Choo 龚明金. View the painting from the original 2016 website collection and enquire about the work.`} image={work.image} imageAlt={`${work.descriptiveLabel} by Keng Seng Choo`} mainEntity={entity} extraSchema={extra}>
+  <article class="work-detail wrap"><header class="page-heading"><a class="back-link" href={href('/works/')}>← Selected works</a><p class="eyebrow">KENG SENG CHOO · <span lang="zh">龚明金</span></p><h1>{work.descriptiveLabel}</h1></header>
+    <div class="work-detail-grid"><figure><button class="artwork-image" data-viewer-src={href(work.image)} data-viewer-caption={work.descriptiveLabel} aria-label={`View ${work.descriptiveLabel} full size`}><img src={href(work.image)} alt={`${work.descriptiveLabel} by Keng Seng Choo`} width={work.width} height={work.height} fetchpriority="high" /></button></figure><div class="work-context"><p class="eyebrow">FROM THE ARTIST’S ARCHIVE</p><h2>A painting by<br />Keng Seng Choo</h2><p>This work appeared in the original website’s 2016 collection. The collection date identifies its place in the website archive.</p>{!work.title && <p>A confirmed individual artwork title is not recorded in the archive.</p>}<p>For the painting’s medium, dimensions, creation date, provenance or current availability, please enquire directly.</p><a class="button" href={href('/contact/')}>Enquire about this work ↗</a><a class="text-link" href={href('/collectors/')}>About the artist &amp; collecting ↗</a></div></div>
+  </article>
+</Base>

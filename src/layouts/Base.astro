@@ -1,15 +1,20 @@
 ---
 import '../styles/global.css';
 import { href } from '../lib/site';
-interface Props { title?: string; description?: string; image?: string; noindex?: boolean; }
-const { title, description = 'Explore the paintings, artist statements and archive of Malaysian artist Keng Seng Choo 龚明金.', image, noindex = false } = Astro.props;
-const fullTitle = title ? `${title} · Keng Seng Choo` : 'Keng Seng Choo 龚明金 · Malaysian Artist';
-const canonical = Astro.site ? new URL(Astro.url.pathname, Astro.site) : undefined;
+import { artist } from '../data/artist';
+import { structuredData } from '../lib/seo';
+interface Props { title?: string; description?: string; image?: string; imageAlt?: string; noindex?: boolean; lang?: string; pageType?: string; canonicalPath?: string; mainEntity?: Record<string, unknown>; extraSchema?: Record<string, unknown>[]; }
+const { title, description = artist.description, image = artist.socialImage,
+  imageAlt = 'Painting by Malaysian artist Keng Seng Choo 龚明金', noindex = false, lang = 'en',
+  pageType = 'WebPage', canonicalPath, mainEntity, extraSchema = [] } = Astro.props;
+const fullTitle = title ? `${title} · Keng Seng Choo` : 'Keng Seng Choo 龚明金 | Malaysian Artist & Oil Paintings';
+const canonical = Astro.site ? new URL(canonicalPath ? href(canonicalPath) : Astro.url.pathname, Astro.site) : undefined;
+const graph = Astro.site && canonical && !noindex ? structuredData({site:Astro.site, canonical, title:fullTitle, description, pageType, mainEntity, extra:extraSchema}) : undefined;
 const current = Astro.url.pathname;
-const nav = [['Works','/works/'],['About','/about/'],['Archive','/articles/'],['Contact','/contact/']];
+const nav = [['Works','/works/'],['About','/about/'],['Collectors','/collectors/'],['Archive','/articles/'],['Contact','/contact/']];
 ---
 <!doctype html>
-<html lang="en">
+<html lang={lang}>
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -19,10 +24,20 @@ const nav = [['Works','/works/'],['About','/about/'],['Archive','/articles/'],['
     {canonical && <link rel="canonical" href={canonical} />}
     <meta property="og:title" content={fullTitle} />
     <meta property="og:description" content={description} />
-    <meta property="og:type" content="website" />
+    <meta property="og:type" content={extraSchema.some(item => item['@type'] === 'Article') ? 'article' : 'website'} />
+    <meta property="og:site_name" content="Keng Seng Choo 龚明金" />
+    <meta property="og:locale" content="en_MY" />
+    <meta property="og:locale:alternate" content="zh_CN" />
     {canonical && <meta property="og:url" content={canonical} />}
     {image && Astro.site && <meta property="og:image" content={new URL(href(image), Astro.site)} />}
-    {noindex && <meta name="robots" content="noindex, nofollow" />}
+    {image && <meta property="og:image:alt" content={imageAlt} />}
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={fullTitle} />
+    <meta name="twitter:description" content={description} />
+    {image && Astro.site && <meta name="twitter:image" content={new URL(href(image), Astro.site)} />}
+    <meta name="robots" content={noindex ? 'noindex, nofollow' : 'index, follow, max-image-preview:large'} />
+    {Astro.site && <link rel="alternate" type="application/rss+xml" title="Keng Seng Choo archive" href={href('/feed.xml')} />}
+    {graph && <script type="application/ld+json" set:html={JSON.stringify(graph).replace(/</g,'\\u003c')} />}
     <link rel="icon" type="image/svg+xml" href={href('/favicon.svg')} />
   </head>
   <body>

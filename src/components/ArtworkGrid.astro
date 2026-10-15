@@ -1,6 +1,7 @@
 ---
 import { href } from '../lib/site';
-interface Work { id: string; title: string | null; descriptiveLabel: string; image: string; series: string; width?: number; height?: number; }
+import { artworkPath } from '../lib/seo';
+interface Work { id: string; title: string | null; descriptiveLabel: string; image: string; series: string; sourcePictureId: number; width?: number; height?: number; }
 interface Props { works: Work[]; compact?: boolean; }
 const { works, compact = false } = Astro.props;
 ---
@@ -10,6 +11,6 @@ const { works, compact = false } = Astro.props;
       <img src={href(work.image)} alt={work.descriptiveLabel} width={work.width || 800} height={work.height || 900} loading="lazy" decoding="async" />
       <span class="view-art" aria-hidden="true">View artwork ↗</span>
     </button>
-    <figcaption><span>{work.title || work.descriptiveLabel}</span><span class="art-number">{String(index + 1).padStart(2,'0')}</span></figcaption>
+    <figcaption><a href={href(artworkPath(work))}>{work.title || work.descriptiveLabel}</a><span class="art-number">{String(index + 1).padStart(2,'0')}</span></figcaption>
   </figure>)}
 </div>

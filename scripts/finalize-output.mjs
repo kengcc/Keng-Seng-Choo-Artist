@@ -2,6 +2,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { parseFrontmatter } from '@astrojs/markdown-remark';
 import legacy from '../src/data/legacy-urls.json' with { type: 'json' };
+import works from '../src/data/artworks.json' with { type: 'json' };
 const dist = path.resolve('dist');
 const base = (process.env.SITE_BASE || '/').replace(/\/$/, '');
 const site = process.env.SITE_URL;
@@ -26,16 +27,22 @@ fs.writeFileSync(path.join(dist,'_redirects'),cf.join('\n')+'\n');
 fs.writeFileSync(path.join(dist,'.nojekyll'),'');
 
 const publicPages = ['/','/works/','/about/','/about/artist-statement/','/about/a-gentleman-artist/',
-  '/collections/praise-of-pigeons/','/articles/','/interviews/','/exhibitions/','/contact/'];
+  '/collections/praise-of-pigeons/','/articles/','/interviews/','/exhibitions/','/contact/','/collectors/'];
+const artworkRoutes = works.map(work => {
+  const label=(work.title||'archive-painting').toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'');
+  return {route:`/works/${label}-${work.sourcePictureId}/`,image:work.image};
+});
 const articles = fs.readdirSync('src/content/articles').filter(n=>n.endsWith('.md')).map(filename => {
   const source = fs.readFileSync(path.join('src/content/articles',filename),'utf8');
   return parseFrontmatter(source).frontmatter;
 }).filter(article=>!article.draft);
+const discoveryArticles = articles.filter(article=>!article.duplicateOf);
 if (site) {
-  const urls = [...publicPages,...articles.map(a=>a.route)].map(url=>`<url><loc>${xml(new URL(href(url),site).href)}</loc></url>`).join('');
-  fs.writeFileSync(path.join(dist,'sitemap.xml'),`<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">${urls}</urlset>`);
+  const urls = [...publicPages,...discoveryArticles.map(a=>a.route)].map(url=>`<url><loc>${xml(new URL(href(url),site).href)}</loc></url>`).join('')+
+    artworkRoutes.map(work=>`<url><loc>${xml(new URL(href(work.route),site).href)}</loc><image:image><image:loc>${xml(new URL(href(work.image),site).href)}</image:loc></image:image></url>`).join('');
+  fs.writeFileSync(path.join(dist,'sitemap.xml'),`<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">${urls}</urlset>`);
   fs.writeFileSync(path.join(dist,'robots.txt'),`User-agent: *\nAllow: /\nSitemap: ${new URL(href('/sitemap.xml'),site).href}\n`);
-  const items = articles.sort((a,b)=>b.date.localeCompare(a.date)).map(a=>`<item><title>${xml(a.title)}</title><link>${xml(new URL(href(a.route),site).href)}</link><guid>${xml(new URL(href(a.route),site).href)}</guid><pubDate>${new Date(a.date+'T00:00:00Z').toUTCString()}</pubDate><description>${xml(a.summary)}</description></item>`).join('');
+  const items = discoveryArticles.sort((a,b)=>b.date.localeCompare(a.date)).map(a=>`<item><title>${xml(a.title)}</title><link>${xml(new URL(href(a.route),site).href)}</link><guid>${xml(new URL(href(a.route),site).href)}</guid><pubDate>${new Date(a.date+'T00:00:00Z').toUTCString()}</pubDate><description>${xml(a.summary)}</description></item>`).join('');
   fs.writeFileSync(path.join(dist,'feed.xml'),`<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"><channel><title>Keng Seng Choo archive</title><link>${xml(new URL(href('/'),site).href)}</link><description>Articles, exhibitions and interviews.</description>${items}</channel></rss>`);
 } else {
   fs.writeFileSync(path.join(dist,'robots.txt'),'User-agent: *\nDisallow: /\n');
