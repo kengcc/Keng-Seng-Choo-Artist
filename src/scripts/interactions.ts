@@ -1,3 +1,32 @@
+const themeToggle = document.querySelector<HTMLButtonElement>('.theme-toggle');
+const systemTheme = matchMedia('(prefers-color-scheme: dark)');
+let themePreference: string | null = null;
+try { themePreference = localStorage.getItem('ksc-theme'); } catch {}
+if (themePreference !== 'light' && themePreference !== 'dark') themePreference = null;
+function applyTheme(theme: 'light' | 'dark') {
+  document.documentElement.dataset.theme = theme;
+  themeToggle?.setAttribute('aria-checked', String(theme === 'dark'));
+  const label = themeToggle?.querySelector('.theme-label');
+  if (label) label.textContent = theme === 'dark' ? 'Dark' : 'Light';
+  document.querySelector('meta[name="theme-color"]')?.setAttribute('content', theme === 'dark' ? '#191f1d' : '#f7f5ef');
+}
+applyTheme(themePreference === 'light' || themePreference === 'dark' ? themePreference : systemTheme.matches ? 'dark' : 'light');
+if (themeToggle) themeToggle.hidden = false;
+themeToggle?.addEventListener('click', () => {
+  const theme = document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark';
+  themePreference = theme;
+  try { localStorage.setItem('ksc-theme', theme); } catch {}
+  applyTheme(theme);
+});
+systemTheme.addEventListener('change', event => {
+  if (!themePreference) applyTheme(event.matches ? 'dark' : 'light');
+});
+window.addEventListener('storage', event => {
+  if (event.key !== 'ksc-theme' && event.key !== null) return;
+  themePreference = event.newValue === 'light' || event.newValue === 'dark' ? event.newValue : null;
+  applyTheme(themePreference || (systemTheme.matches ? 'dark' : 'light'));
+});
+
 const menu = document.querySelector<HTMLButtonElement>('.menu-toggle');
 const nav = document.querySelector<HTMLElement>('#primary-nav');
 menu?.addEventListener('click', () => {
