@@ -1,0 +1,11 @@
+---
+import Base from '../layouts/Base.astro';
+import ArtworkGrid from '../components/ArtworkGrid.astro';
+import works from '../data/artworks.json';
+import { href } from '../lib/site';
+---
+<Base title="Selected works">
+  <section class="page-heading wrap"><p class="eyebrow">THE WORK · <span lang="zh">画集</span></p><h1>Selected works</h1><p>Paintings from the original website’s 2016 collection.<br />Take a closer look at each work.</p><span class="collection-count">{works.length} paintings · 2016 collection</span></section>
+  <section class="wrap section works-section"><ArtworkGrid works={works} /></section>
+  <section class="collection-links wrap"><h2>More to explore</h2><a href={href('/collections/praise-of-pigeons/')}><span>Praise of Pigeons <span lang="zh">鸽之颂</span></span><span>↗</span></a><a href={href('/contact/')}><span>Enquire about a private preview</span><span>↗</span></a></section>
+</Base>

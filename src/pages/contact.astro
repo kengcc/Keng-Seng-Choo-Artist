@@ -1,0 +1,7 @@
+---
+import { render } from 'astro:content';
+import Base from '../layouts/Base.astro';
+import { pageById } from '../lib/site';
+const page = await pageById(9); const { Content } = await render(page);
+---
+<Base title="Contact 联系"><section class="contact-page wrap"><div class="page-heading"><p class="eyebrow">CONTACT · <span lang="zh">联系</span></p><h1>Let’s be<br /><em>in touch.</em></h1><p>For artwork enquiries and conversations.</p></div><div class="contact-details"><p class="eyebrow">EMAIL &amp; FACEBOOK</p><div class="prose"><Content /></div></div></section></Base>

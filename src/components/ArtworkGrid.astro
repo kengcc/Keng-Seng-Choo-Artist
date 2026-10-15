@@ -1,0 +1,15 @@
+---
+import { href } from '../lib/site';
+interface Work { id: string; title: string | null; descriptiveLabel: string; image: string; series: string; width?: number; height?: number; }
+interface Props { works: Work[]; compact?: boolean; }
+const { works, compact = false } = Astro.props;
+---
+<div class:list={['art-grid', { compact }]}>
+  {works.map((work, index) => <figure class="artwork">
+    <button class="artwork-image" data-viewer-src={href(work.image)} data-viewer-caption={work.descriptiveLabel} aria-label={`View ${work.descriptiveLabel}`}>
+      <img src={href(work.image)} alt={work.descriptiveLabel} width={work.width || 800} height={work.height || 900} loading="lazy" decoding="async" />
+      <span class="view-art" aria-hidden="true">View artwork ↗</span>
+    </button>
+    <figcaption><span>{work.title || work.descriptiveLabel}</span><span class="art-number">{String(index + 1).padStart(2,'0')}</span></figcaption>
+  </figure>)}
+</div>

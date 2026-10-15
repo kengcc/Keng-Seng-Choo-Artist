@@ -1,0 +1,55 @@
+---
+import '../styles/global.css';
+import { href } from '../lib/site';
+interface Props { title?: string; description?: string; image?: string; noindex?: boolean; }
+const { title, description = 'Explore the paintings, artist statements and archive of Malaysian artist Keng Seng Choo 龚明金.', image, noindex = false } = Astro.props;
+const fullTitle = title ? `${title} · Keng Seng Choo` : 'Keng Seng Choo 龚明金 · Malaysian Artist';
+const canonical = Astro.site ? new URL(Astro.url.pathname, Astro.site) : undefined;
+const current = Astro.url.pathname;
+const nav = [['Works','/works/'],['About','/about/'],['Archive','/articles/'],['Contact','/contact/']];
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content={description} />
+    <meta name="theme-color" content="#f7f5ef" />
+    <title>{fullTitle}</title>
+    {canonical && <link rel="canonical" href={canonical} />}
+    <meta property="og:title" content={fullTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    {canonical && <meta property="og:url" content={canonical} />}
+    {image && Astro.site && <meta property="og:image" content={new URL(href(image), Astro.site)} />}
+    {noindex && <meta name="robots" content="noindex, nofollow" />}
+    <link rel="icon" type="image/svg+xml" href={href('/favicon.svg')} />
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <header class="site-header wrap">
+      <a href={href('/')} class="wordmark" aria-label="Keng Seng Choo home">
+        <span>KENG SENG CHOO</span><span class="wordmark-zh" lang="zh">龚明金</span>
+      </a>
+      <button class="menu-toggle" aria-controls="primary-nav" aria-expanded="false">Menu <span aria-hidden="true">＋</span></button>
+      <nav id="primary-nav" class="primary-nav" aria-label="Main navigation">
+        {nav.map(([label,path]) => <a href={href(path)} aria-current={current.startsWith(href(path)) ? 'page' : undefined}>{label}</a>)}
+      </nav>
+      <span class="header-note">PAINTINGS &amp; PERSPECTIVES</span>
+    </header>
+    <main id="main"><slot /></main>
+    <footer class="site-footer wrap">
+      <div><a href={href('/')} class="footer-name">Keng Seng Choo <span lang="zh">龚明金</span></a><p>For art, no regrets. <span lang="zh">因为艺术，无悔无憾。</span></p></div>
+      <div class="footer-links"><a href={href('/interviews/')}>Interviews</a><a href={href('/exhibitions/')}>Exhibitions</a><a href={href('/contact/')}>Get in touch ↗</a></div>
+      <p class="copyright">© {new Date().getFullYear()} Keng Seng Choo. Artwork and original materials retain their respective credits.</p>
+    </footer>
+    <dialog class="art-dialog" aria-label="Artwork viewer">
+      <div class="viewer-bar"><span class="viewer-count"></span><button class="viewer-close" aria-label="Close artwork viewer">Close <span aria-hidden="true">×</span></button></div>
+      <div class="viewer-image"><button class="viewer-prev" aria-label="Previous image">←</button><img alt="" /><button class="viewer-next" aria-label="Next image">→</button></div>
+      <p class="viewer-caption"></p>
+    </dialog>
+    <script>
+      import '../scripts/interactions';
+    </script>
+  </body>
+</html>

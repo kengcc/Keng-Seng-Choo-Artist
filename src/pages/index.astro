@@ -1,0 +1,26 @@
+---
+import Base from '../layouts/Base.astro';
+import ArtworkGrid from '../components/ArtworkGrid.astro';
+import ArticleList from '../components/ArticleList.astro';
+import works from '../data/artworks.json';
+import legacyUrls from '../data/legacy-urls.json';
+import { href, publicArticles } from '../lib/site';
+const hero = works.find(w => w.title === 'Mirror')!;
+const selected = [works.find(w => w.title === 'Freedom')!, works.find(w => w.title === 'Village Pigeons')!, works.find(w => w.title === 'Colorful Life')!];
+const articles = await publicArticles();
+const stories = [43,104,69].map(id => articles.find(a => a.data.wordpressId === id)!);
+---
+<Base image={hero.image}>
+  <script define:vars={{ queryRoutes: Object.fromEntries(Object.entries(legacyUrls).filter(([key]) => key.startsWith('/?p=')).map(([key,value]) => [key.slice(4), href(value)])) }}>
+    const postId = new URLSearchParams(window.location.search).get('p');
+    if (postId && queryRoutes[postId]) window.location.replace(queryRoutes[postId]);
+  </script>
+  <section class="hero wrap">
+    <div class="hero-copy"><p class="eyebrow"><span class="small-line"></span> MALAYSIAN ARTIST · ALOR SETAR</p><h1>A life<br />in <em>colour.</em></h1><p class="hero-intro">Paintings, reflections, and a life devoted to art.<br /><span lang="zh">以色彩寄情，以艺术写人生。</span></p><a class="button" href={href('/works/')}>Explore the works <span aria-hidden="true">↗</span></a><p class="hero-signature">Keng Seng Choo <span lang="zh">龚明金</span></p></div>
+    <figure class="hero-art"><div class="hero-mount"><img src={href(hero.image)} alt="Mirror — a painting of pigeons in blue tones by Keng Seng Choo" width={hero.width} height={hero.height} fetchpriority="high" /></div><figcaption><span>Mirror</span><span>FROM THE 2016 COLLECTION</span></figcaption></figure>
+  </section>
+  <section class="intro-line wrap"><span class="section-index">01 / THE WORK</span><p>Colour, rhythm, and the quiet<br />poetry of everyday life.</p><a class="text-link" href={href('/about/artist-statement/')}>Read the artist’s statement ↗</a></section>
+  <section class="section wrap"><div class="section-heading"><div><p class="eyebrow">A CLOSER LOOK</p><h2>Selected works</h2></div><a class="text-link" href={href('/works/')}>View the collection ↗</a></div><ArtworkGrid works={selected} compact /></section>
+  <section class="artist-band"><div class="wrap artist-intro"><div class="artist-label"><p class="eyebrow">THE ARTIST</p><h2>For art,<br /><em>no regrets.</em></h2><p lang="zh" class="chinese-line">因为艺术，无悔无憾。</p></div><div class="artist-copy"><p>Born in Alor Setar, Kedah in 1945, Keng Seng Choo graduated from the Nanyang Academy of Fine Arts in Singapore in 1965.</p><p>His artist’s statement reflects on pigeons, peace and freedom, and the possibilities of figurative and abstract expression.</p><a class="text-link" href={href('/about/')}>Meet the artist ↗</a></div></div></section>
+  <section class="section wrap"><div class="section-heading"><div><p class="eyebrow">WORDS &amp; PERSPECTIVES</p><h2>From the archive</h2></div><a class="text-link" href={href('/articles/')}>Explore all articles ↗</a></div><ArticleList entries={stories} /></section>
+</Base>

@@ -1,0 +1,9 @@
+---
+import { render } from 'astro:content';
+import Base from '../layouts/Base.astro';
+import { pageById, publicArticles } from '../lib/site';
+import ArticleList from '../components/ArticleList.astro';
+const page = await pageById(44); const { Content } = await render(page);
+const entries = (await publicArticles()).filter(p => p.data.kind === 'interview' || [43,69].includes(p.data.wordpressId || 0));
+---
+<Base title="Interviews 专访"><section class="page-heading wrap"><p class="eyebrow">CONVERSATIONS · <span lang="zh">专访</span></p><h1>In conversation</h1><p>Interviews and perspectives from the archive.</p></section><section class="wrap section"><div class="prose interview-intro"><Content /></div><ArticleList entries={entries} /></section></Base>

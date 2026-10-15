@@ -1,0 +1,5 @@
+---
+import Base from '../layouts/Base.astro';
+import { href } from '../lib/site';
+---
+<Base title="Page not found" noindex><section class="page-heading wrap error-page"><p class="eyebrow">404</p><h1>A different path.</h1><p>We couldn’t find this page. Explore the paintings or return to the archive.</p><a class="button" href={href('/works/')}>Explore the works ↗</a></section></Base>

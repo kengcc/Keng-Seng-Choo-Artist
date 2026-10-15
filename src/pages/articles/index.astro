@@ -1,0 +1,10 @@
+---
+import Base from '../../layouts/Base.astro';
+import ArticleList from '../../components/ArticleList.astro';
+import { publicArticles } from '../../lib/site';
+const entries = await publicArticles();
+---
+<Base title="Articles and archive">
+  <section class="page-heading wrap"><p class="eyebrow">WORDS &amp; PERSPECTIVES · <span lang="zh">文章与专访</span></p><h1>The archive</h1><p>Exhibitions, conversations, press coverage and reflections.<br />Original writing, in English and Chinese.</p></section>
+  <section class="wrap archive-section" data-archive><div class="archive-toolbar"><div class="filter-tabs" role="group" aria-label="Filter articles"><button data-filter="all" aria-pressed="true">All articles</button><button data-filter="exhibition" aria-pressed="false">Exhibitions</button><button data-filter="interview" aria-pressed="false">Interviews</button></div><label class="archive-search"><span class="sr-only">Search the archive</span><input type="search" placeholder="Search the archive…" /><span aria-hidden="true">⌕</span></label></div><p class="archive-count" aria-live="polite">{entries.length} articles</p><ArticleList entries={entries} /><p class="no-results" hidden>No articles match your search. Try a different title or year.</p></section>
+</Base>

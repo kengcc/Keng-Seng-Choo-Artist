@@ -1,0 +1,11 @@
+---
+import { href, formatDate } from '../lib/site';
+const { entries } = Astro.props;
+---
+<div class="article-list">
+  {entries.map(entry => <article class="article-row" data-archive-entry data-kind={entry.data.kind} data-search={`${entry.data.title} ${entry.data.tags.join(' ')} ${entry.data.date}`}>
+    <div class="article-meta"><time datetime={entry.data.date}>{formatDate(entry.data.date)}</time><span>{entry.data.kind === 'exhibition' ? 'Exhibition' : entry.data.kind === 'interview' ? 'Interview' : 'From the archive'}</span></div>
+    <div><h2><a href={href(entry.data.route)}>{entry.data.title}</a></h2><p>{entry.data.summary}</p></div>
+    <a class="article-arrow" href={href(entry.data.route)} aria-label={`Read ${entry.data.title}`}>↗</a>
+  </article>)}
+</div>

@@ -1,0 +1,7 @@
+---
+import Base from '../layouts/Base.astro';
+import ArticleList from '../components/ArticleList.astro';
+import { publicArticles } from '../lib/site';
+const entries = (await publicArticles()).filter(p => p.data.kind === 'exhibition');
+---
+<Base title="Exhibitions"><section class="page-heading wrap"><p class="eyebrow">EXHIBITIONS · <span lang="zh">展览</span></p><h1>On view, in memory</h1><p>An archive of exhibitions and announcements.<br />Dates shown are the original article dates.</p></section><section class="wrap section"><ArticleList entries={entries} /></section></Base>
