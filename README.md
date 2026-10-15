@@ -1,4 +1,4 @@
-# Keng Seng Choo website
+# Keng Seng Choo Artist
 
 A static artist portfolio and bilingual archive, built with Astro. Articles are Markdown files and can be added by prompting the assistant in this project. See [the content workflow](docs/content-workflow.md).
 
@@ -9,6 +9,8 @@ Use Node.js 24 or newer supported by Astro and install dependencies with `npm ci
 The website contains the 31 published WordPress articles, seven unrestricted pages and 12 paintings from the original 2016 collection. The recovered private archive is kept outside this repository until a selection is made. The two near-duplicate articles retain their original records and routes.
 
 ## Hosting
+
+The public artist source repository is [Keng Seng Choo Artist](https://github.com/kengcc/Keng-Seng-Choo-Artist). The existing [live website](https://kengcc.github.io/kengsengchoo.com/) is deployed from `kengcc/kengsengchoo.com`; keep both repositories in sync when publishing. The workflow builds and validates both copies, and deploys only from the hosting repository to preserve the current website address.
 
 The GitHub Actions workflow builds and publishes the `main` branch through GitHub Pages. Set the repository's Pages source to GitHub Actions. Its default publishing address is the repository owner's GitHub Pages project URL.
 

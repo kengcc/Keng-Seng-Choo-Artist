@@ -33,6 +33,7 @@
 @media(max-width:700px){.hero h1.artist-hero-name{font-size:64px}.primary-nav{gap:19px;justify-content:space-between}.primary-nav a{font-size:11px}.artist-credentials{grid-template-columns:1fr;gap:19px;padding-block:0 28px}.artist-credentials strong{font-size:20px}.artist-credentials span{font-size:11px}.profile-summary p{font-size:16px}.about-page .original-biography>p:first-child img{float:none;width:180px;margin:0 0 22px}.work-detail-grid{grid-template-columns:1fr;gap:10px}.work-detail .artwork-image{padding:18px}.work-context{padding-top:20px}.work-detail .page-heading h1{font-size:42px}.work-context h2{font-size:31px}.work-detail{padding-bottom:50px}}
 
 /* Theme control remains available beside the menu on small screens. */
+.hero-actions{display:flex;align-items:center;flex-wrap:wrap;gap:20px 24px}
 @layer components {
   .header-actions{display:flex;align-items:center;gap:18px;flex:none;order:2}
   .theme-toggle{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:44px;min-width:82px;padding:8px 12px;border:1px solid var(--line);border-radius:24px;background:transparent;font-size:12px;font-weight:500;line-height:1.2}

@@ -29,6 +29,8 @@ jobs:
       - name: Check links and content
         run: npm run validate && npm run validate:seo
   deploy:
+    # The artist repository shares this source; the original repository hosts the live URL.
+    if: github.repository == 'kengcc/kengsengchoo.com'
     needs: build
     runs-on: ubuntu-latest
     environment:
