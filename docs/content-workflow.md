@@ -31,3 +31,15 @@ Only the site source and explicitly selected public media belong in the website 
 Version each approved change in Git. The deployment workflow publishes the selected branch; revert a content commit and redeploy to restore an earlier version. Recheck the website after deployment, including an article, an artwork image and an old URL.
 
 The original VIP gallery could not be matched and is omitted. The recovered personal collection remains excluded. Add only artwork referenced in WordPress content or subsequently selected explicitly by the owner. Keep the public contact page limited to email and Facebook.
+
+## Artist identity and visitor structure
+
+Keng is the family name; Seng Choo is the given name. Keep the full public name as Keng Seng Choo. The homepage groups the given name together, and the shared Person data specifies both parts explicitly.
+
+The main navigation is The Artist, Artworks, Articles & Events, and Contact. Recognition and collecting history belong on the artist page; practical collecting questions belong at `/collectors/`. Preserve existing URLs when changing labels.
+
+Articles may include `section` (`events`, `press`, `writing`, `artworks`, or `updates`). Use `press` for reports and reviews even when they discuss exhibitions. Do not imply a contributor's writing was authored by the artist. Language labels and the archive filter use the `language` field. An original duplicate may be omitted from listings while its page and canonical link remain intact.
+
+For confirmed dates in the original announcement, add `eventStart`, optional `eventEnd` (ISO dates), and `eventVenue`. Keep the original article `date` intact; it is displayed as the publication date. Never infer an event year from a publication date alone.
+
+Artwork records use `category` (`pigeons` or `figures`) for visitor browsing and `sourceContext` to explain the original publication. Only add works already published in WordPress or explicitly selected by the owner. Preserve all existing slugs. The two earlier oil paintings have source attachment/article references, rather than NextGEN picture IDs. Add medium, creation year, dimensions and bilingual titles only when verified in the source. Artwork enquiry emails include the title and stable reference automatically.

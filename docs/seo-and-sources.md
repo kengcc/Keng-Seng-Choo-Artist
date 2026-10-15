@@ -34,3 +34,9 @@ Google’s [AI search guidance](https://developers.google.com/search/docs/fundam
 After production builds, run `npm run validate` and `npm run validate:seo`. Keep Search Console ownership verification and measurement separate from these code changes. No Search Console account has been connected or submitted by this implementation.
 
 When kengsengchoo.com is acquired, switch the hosting origin and base path together, regenerate canonical/entity URLs and sitemap, and preserve redirects from the GitHub Pages address where supported.
+
+## Artist name and consolidated visitor pages
+
+The owner confirmed Keng as the family name and Seng Choo as the given name. Person structured data records `familyName: Keng` and `givenName: Seng Choo`; display names remain Keng Seng Choo. The homepage keeps the given name together.
+
+Career and collecting evidence is consolidated on `/about/`, with practical questions at `/collectors/`. All historical article URLs remain available. The gallery now also includes Peaceful Life and Kampung Life, with the oil painting medium, 2007 creation year and dimensions from the original WordPress article 41 captions. No current price or availability is inferred.

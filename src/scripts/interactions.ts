@@ -40,19 +40,22 @@ const archive = document.querySelector<HTMLElement>('[data-archive]');
 if (archive) {
   const search = archive.querySelector<HTMLInputElement>('input[type=search]')!;
   const filters = [...archive.querySelectorAll<HTMLButtonElement>('[data-filter]')];
+  const language = archive.querySelector<HTMLSelectElement>('select');
   const entries = [...archive.querySelectorAll<HTMLElement>('[data-archive-entry]')];
   let filter = 'all';
   const update = () => {
     const query = search.value.toLocaleLowerCase().trim();
     let count = 0;
     for (const entry of entries) {
-      const visible = (filter === 'all' || entry.dataset.kind === filter) && entry.dataset.search!.toLocaleLowerCase().includes(query);
+      const matchesLanguage = !language || language.value === 'all' || entry.dataset.language === language.value || entry.dataset.language === 'en-zh';
+      const visible = (filter === 'all' || entry.dataset.kind === filter) && matchesLanguage && entry.dataset.search!.toLocaleLowerCase().includes(query);
       entry.hidden = !visible; if (visible) count++;
     }
-    archive.querySelector<HTMLElement>('.archive-count')!.textContent = `${count} ${count === 1 ? 'article' : 'articles'}`;
+    archive.querySelector<HTMLElement>('.archive-count')!.textContent = `${count} ${count === 1 ? 'record' : 'records'}`;
     archive.querySelector<HTMLElement>('.no-results')!.hidden = count > 0;
   };
   search.addEventListener('input', update);
+  language?.addEventListener('change', update);
   for (const button of filters) button.addEventListener('click', () => {
     filter = button.dataset.filter!;
     for (const item of filters) item.setAttribute('aria-pressed', String(item === button));

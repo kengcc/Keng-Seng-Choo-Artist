@@ -1,0 +1,37 @@
+---
+import { render } from 'astro:content';
+import Base from '../layouts/Base.astro';
+import { href, pageById, publicArticles } from '../lib/site';
+import { artist, sources } from '../data/artist';
+import ArticleList from '../components/ArticleList.astro';
+const original = await pageById(8); const { Content } = await render(original);
+const articles = await publicArticles();
+const interviews = [43,69].map(id => articles.find(a => a.data.wordpressId === id)!);
+const person = Astro.site ? {'@id':`${new URL(href('/'),Astro.site).href}#artist`} : undefined;
+---
+<Base title="The Artist — Biography & Career" description="Meet Keng Seng Choo 龚明金: Malaysian artist, his background, Nanyang education, artistic practice, career milestones and recognition." pageType="ProfilePage" mainEntity={person}>
+  <article class="wrap artist-page">
+    <header class="page-heading"><p class="eyebrow">THE ARTIST · <span lang="zh">画家简介</span></p><h1>Keng Seng Choo</h1><p class="artist-name-zh" lang="zh">龚明金</p></header>
+    <section class="artist-profile" aria-label="Artist biography">
+      <figure class="profile-portrait"><img src={href(artist.portrait)} width="340" height="340" alt="Portrait of Keng Seng Choo 龚明金" fetchpriority="high" /><figcaption>Keng Seng Choo <span lang="zh">龚明金</span></figcaption></figure>
+      <div class="prose"><nav class="language-links" aria-label="Biography language"><a href="#biography-en" lang="en">English</a><a href="#biography-zh" lang="zh">中文</a></nav>
+        <section id="biography-en" lang="en"><h2>A life in Malaysian art</h2><p>Born in Alor Setar, Kedah in 1945, Keng Seng Choo graduated from the Nanyang Academy of Fine Arts in Singapore in 1965. His practice includes oil painting, figurative compositions and pigeon paintings rooted in Malaysian life.</p><p>People, family and the rhythms of everyday life recur in his work. Pigeons carry a particular personal meaning: in his artist’s statement, he recalls growing up in a family that kept pigeons, and describes their connection to freedom, peace and artistic expression.</p><p>His career is documented through exhibitions, interviews, gallery records and institutional collections. Explore the milestones below, or read <a href={href('/about/artist-statement/')}>his own words about painting</a>.</p></section>
+        <section id="biography-zh" lang="zh"><h2>以艺术为伴</h2><p>龚明金1945年出生于马来西亚吉打州亚罗士打，1965年毕业于新加坡南洋美术学院。他以油画、人物与鸽子题材，表达马来西亚生活中的亲情、乡情与人文情怀。</p><p>他从小在热爱养鸽的家庭长大，鸽子成为他熟悉而亲切的创作题材。在画语中，他谈到鸽子与和平、自由的联系，也分享了自己如何通过具象与抽象的表现，探索色彩、笔触与韵律。<a href={href('/about/artist-statement/#statement-zh')}>阅读画家自述</a>。</p></section>
+      </div>
+    </section>
+    <section class="section" id="career"><div class="section-heading"><div><p class="eyebrow">A CAREER IN CONTEXT</p><h2>Milestones</h2></div><a class="text-link" href={href('/exhibitions/')}>Explore past exhibitions ↗</a></div>
+      <ol class="career-timeline">
+        <li><span>1945</span><div><h3>Alor Setar, Kedah</h3><p>Born in northern Malaysia.</p></div></li>
+        <li><span>1965</span><div><h3>Nanyang Academy of Fine Arts</h3><p>Graduated in Singapore, laying the foundation for his artistic career.</p></div></li>
+        <li><span>1970</span><div><h3>International recognition</h3><p>Received a Silver Medal at the New York International Art Show, recorded in the original biography and <a href={sources.daiichi}>Daiichi’s artist profile</a>.</p></div></li>
+        <li><span>1992</span><div><h3>Darulaman Group Art Exhibition</h3><p>Dr. Tan Chee Khuan recalls his participation and the opening-day sale of his paintings in <a href={href('/about/a-gentleman-artist/')}>A Gentleman Artist</a>.</p></div></li>
+        <li><span>2012</span><div><h3>Towards Serenity</h3><p>One of five artists from Kedah featured in the <a href={href('/articles/towards-serenity-exhibition/')}>G13 Gallery group exhibition</a>.</p></div></li>
+        <li><span>2015</span><div><h3>Contemporary Nanyang Art Exhibition</h3><p>The original website preserves the <a href={href('/articles/contemporary-nanyang-art-exhibition-2015/')}>exhibition announcement</a> for Soka Exhibition Hall.</p></div></li>
+      </ol>
+    </section>
+    <section class="recognition-panel" id="recognition"><p class="eyebrow">RECOGNITION &amp; COLLECTING HISTORY</p><h2>Beyond the studio</h2><div class="prose"><p>Bank Negara Malaysia’s <a href={sources.bankNegara}><em>Drops of Colour</em> exhibition page</a> names Keng Seng Choo among the artists represented in the Bank’s collection. <a href={sources.daiichi}>Daiichi Art</a> documents his education, awards and institutional recognition.</p><p>His collecting history is also reflected in <a href={sources.klas}>KL Lifestyle Art Space’s artist archive</a>, <a href={sources.henryButcher2024}>Henry Butcher’s auction results of 25 August 2024</a> and a <a href={sources.klas2025}>KLAS catalogue listing dated 19 January 2025</a>. These are dated market records; current artwork availability is confirmed by enquiry.</p><p lang="zh">画廊、机构收藏与历年拍卖资料，记录了龚明金的艺术历程与收藏历史。以上资料均附出处；作品现时是否可供收藏，请直接联系查询。</p></div><a class="text-link" href={href('/collectors/')}>Collecting &amp; enquiries ↗</a></section>
+    <section class="section"><div class="section-heading"><div><p class="eyebrow">IN HIS OWN WORDS &amp; IN CONVERSATION</p><h2>Read his story</h2></div><a class="text-link" href={href('/interviews/')}>All press &amp; interviews ↗</a></div><div class="story-links"><a href={href('/about/artist-statement/')}><strong>The artist’s statement</strong><span>English &amp; 中文 · Thoughts on pigeons, freedom and painting ↗</span></a><a href={href('/about/a-gentleman-artist/')}><strong>A Gentleman Artist</strong><span>A catalogue essay by Dr. Tan Chee Khuan ↗</span></a></div><ArticleList entries={interviews} /></section>
+    <details class="original-record"><summary>Read the original website biography / 原网站简介</summary><div class="prose original-biography"><p class="archive-note">Preserved as a historical record. Time-sensitive wording reflects the original website.</p><Content /></div></details>
+    <footer class="article-end"><a class="button" href={href('/works/')}>Explore the artworks ↗</a><a class="text-link" href={href('/contact/')}>Contact ↗</a></footer>
+  </article>
+</Base>

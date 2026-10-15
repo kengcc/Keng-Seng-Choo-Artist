@@ -1,6 +1,8 @@
 // Public facts corroborated by the artist archive and the linked institutional/gallery profiles.
 export const artist = {
   name: 'Keng Seng Choo',
+  familyName: 'Keng',
+  givenName: 'Seng Choo',
   chineseName: '龚明金',
   description: 'Keng Seng Choo 龚明金 is an established Malaysian artist known for oil painting, figurative compositions and pigeon paintings rooted in Malaysian life.',
   portrait: '/media/art-cfea3d50c67d4d00.webp',

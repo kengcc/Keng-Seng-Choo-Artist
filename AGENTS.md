@@ -2,6 +2,8 @@
 
 This is an Astro static website. The parent directory holds local WordPress backups and migration evidence; only this `site/` directory is intended for a website source repository.
 
+- Artist name: **Keng** is the family name; **Seng Choo** is the given name. Display the full name in that order. Never isolate Choo as a surname, including in headings, structured data or new writing. Preserve quotations and historical source text.
+
 - Articles live in `src/content/articles/` as Markdown. Read an existing article and `docs/content-workflow.md` before adding one. Use the content schema in `src/content.config.ts`.
 - Keep the artist's verified facts, original artwork titles, source credits and archival dates. Do not invent awards, exhibitions, techniques, artwork years, media, dimensions, prices or availability. Distinguish a translation from original writing.
 - Keep stable slugs and routes. Article listings, exhibition listings and archive search derive automatically from the content collection.

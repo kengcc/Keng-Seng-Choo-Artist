@@ -25,6 +25,7 @@ for(const f of files){
     const data=JSON.parse(script.textContent);structuredPages++;
     const graph=data['@graph'];const person=graph.find(n=>n['@type']==='Person');
     if(person?.name!=='Keng Seng Choo'||person?.alternateName!=='龚明金')errors.push(`${f}: artist identity mismatch`);
+    if(person?.familyName!=='Keng'||person?.givenName!=='Seng Choo')errors.push(`${f}: artist family/given name mismatch`);
     artistIds.add(person['@id']);
     for(const node of graph){
       if(['Product','Offer','AggregateRating'].includes(node['@type']))errors.push(`${f}: unsupported market/review claim`);

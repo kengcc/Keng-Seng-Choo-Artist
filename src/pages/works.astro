@@ -3,9 +3,12 @@ import Base from '../layouts/Base.astro';
 import ArtworkGrid from '../components/ArtworkGrid.astro';
 import works from '../data/artworks.json';
 import { href } from '../lib/site';
+const pigeons = works.filter(w => w.category === 'pigeons');
+const figures = works.filter(w => w.category === 'figures');
 ---
-<Base title="Malaysian Paintings & Selected Works" pageType="CollectionPage" description="Explore Keng Seng Choo’s Malaysian paintings, figurative compositions and pigeon works. View individual paintings from the original 2016 website collection.">
-  <section class="page-heading wrap"><p class="eyebrow">THE WORK · <span lang="zh">画集</span></p><h1>Selected works</h1><p>Malaysian life, figurative compositions and the poetry of pigeons.<br />Paintings from the original website’s 2016 collection.</p><span class="collection-count">{works.length} paintings · 2016 collection</span></section>
-  <section class="wrap section works-section"><ArtworkGrid works={works} /></section>
-  <section class="collection-links wrap"><h2>More to explore</h2><a href={href('/collections/praise-of-pigeons/')}><span>Praise of Pigeons <span lang="zh">鸽之颂</span></span><span>↗</span></a><a href={href('/contact/')}><span>Enquire about a private preview</span><span>↗</span></a></section>
+<Base title="Artworks — Malaysian Paintings" pageType="CollectionPage" description="Explore Keng Seng Choo’s pigeon paintings, figures and Malaysian life, with selected artworks and verified details from the original artist website.">
+  <section class="page-heading wrap"><p class="eyebrow">ARTWORKS · <span lang="zh">画集</span></p><h1>A world in colour.</h1><p>Pigeons, people and the rhythms of Malaysian life.<br />Selected paintings from the artist’s previously published work.</p><span class="collection-count">{works.length} paintings · Select an image to enlarge, or a title for details.</span><nav class="section-jumps" aria-label="Artwork subjects"><a href="#pigeons">Pigeons <span lang="zh">鸽子</span> ↓</a><a href="#figures">Figures &amp; Malaysian life <span lang="zh">人物与生活</span> ↓</a><a href={href('/collectors/')}>Collecting &amp; enquiries ↗</a></nav></section>
+  <section class="wrap section works-section" id="pigeons"><div class="section-heading"><div><p class="eyebrow">01 / PIGEONS · <span lang="zh">鸽子</span></p><h2>Freedom, colour, movement.</h2></div><span class="collection-count">{pigeons.length} paintings</span></div><ArtworkGrid works={pigeons} /></section>
+  <section class="wrap section" id="figures"><div class="section-heading"><div><p class="eyebrow">02 / FIGURES &amp; MALAYSIAN LIFE · <span lang="zh">人物与生活</span></p><h2>The poetry of everyday life.</h2></div><span class="collection-count">{figures.length} paintings</span></div><ArtworkGrid works={figures} /></section>
+  <section class="collection-links wrap"><h2>More to explore</h2><a href={href('/collections/praise-of-pigeons/')}><span>Praise of Pigeons <span lang="zh">鸽之颂</span> · Catalogue</span><span>↗</span></a><a href={href('/about/artist-statement/')}><span>Read the artist’s statement</span><span>↗</span></a><a href={href('/collectors/')}><span>Collecting &amp; enquiries</span><span>↗</span></a></section>
 </Base>

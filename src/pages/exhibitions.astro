@@ -1,7 +1,8 @@
 ---
 import Base from '../layouts/Base.astro';
 import ArticleList from '../components/ArticleList.astro';
-import { publicArticles } from '../lib/site';
-const entries = (await publicArticles()).filter(p => p.data.kind === 'exhibition');
+import { publicArticles, href } from '../lib/site';
+import { articleSection } from '../lib/editorial';
+const entries = (await publicArticles()).filter(p => articleSection(p) === 'events' && !p.data.duplicateOf);
 ---
-<Base title="Exhibitions"><section class="page-heading wrap"><p class="eyebrow">EXHIBITIONS · <span lang="zh">展览</span></p><h1>On view, in memory</h1><p>An archive of exhibitions and announcements.<br />Dates shown are the original article dates.</p></section><section class="wrap section"><ArticleList entries={entries} /></section></Base>
+<Base title="Past Exhibitions & Events"><section class="page-heading wrap"><p class="eyebrow">PAST EXHIBITIONS &amp; EVENTS · <span lang="zh">历年展览与活动</span></p><h1>Art, shared with others.</h1><p>Exhibition announcements and event invitations from the original website. These are historical records; confirmed event dates appear separately from article publication dates.</p><a class="text-link" href={href('/articles/')}>All articles &amp; events ↗</a></section><section class="wrap section"><ArticleList entries={entries} /></section></Base>

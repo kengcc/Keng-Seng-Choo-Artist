@@ -1,9 +1,10 @@
 ---
 import { render } from 'astro:content';
 import Base from '../layouts/Base.astro';
-import { pageById, publicArticles } from '../lib/site';
+import { pageById, publicArticles, href } from '../lib/site';
+import { articleSection } from '../lib/editorial';
 import ArticleList from '../components/ArticleList.astro';
 const page = await pageById(44); const { Content } = await render(page);
-const entries = (await publicArticles()).filter(p => p.data.kind === 'interview' || [43,69].includes(p.data.wordpressId || 0));
+const entries = (await publicArticles()).filter(p => articleSection(p) === 'press' && !p.data.duplicateOf);
 ---
-<Base title="Interviews 专访"><section class="page-heading wrap"><p class="eyebrow">CONVERSATIONS · <span lang="zh">专访</span></p><h1>In conversation</h1><p>Interviews and perspectives from the archive.</p></section><section class="wrap section"><div class="prose interview-intro"><Content /></div><ArticleList entries={entries} /></section></Base>
+<Base title="Press & Interviews 专访"><section class="page-heading wrap"><p class="eyebrow">PRESS &amp; INTERVIEWS · <span lang="zh">报道与专访</span></p><h1>In conversation.</h1><p>Interviews, reviews and press perspectives on the artist and his work.</p><a class="text-link" href={href('/articles/')}>All articles &amp; events ↗</a></section><section class="wrap section"><ArticleList entries={entries} /><details class="original-record"><summary>Original interview index and scans</summary><div class="prose interview-intro"><Content /></div></details></section></Base>

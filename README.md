@@ -6,7 +6,7 @@ A static artist portfolio and bilingual archive, built with Astro. Articles are 
 
 Use Node.js 24 or newer supported by Astro and install dependencies with `npm ci`. Run `npm run dev`, then open the local URL it prints. Run `npm run build` and `npm run validate` before publication.
 
-The website contains the 31 published WordPress articles, seven unrestricted pages and 12 paintings from the original 2016 collection. The recovered private archive is kept outside this repository until a selection is made. The two near-duplicate articles retain their original records and routes.
+The website contains the 31 published WordPress articles, seven unrestricted pages and 14 paintings: the original 12 from the 2016 collection plus two oil paintings already published in earlier WordPress articles. The recovered private archive is kept outside this repository until a selection is made. The two near-duplicate articles retain their original records and routes.
 
 ## Hosting
 

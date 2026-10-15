@@ -13,7 +13,9 @@
     "visibility": "public",
     "width": 1110,
     "height": 1440,
-    "slug": "archive-painting-327"
+    "slug": "archive-painting-327",
+    "category": "pigeons",
+    "sourceContext": "Shown in the original website’s 2016 collection. This is an archive collection date, not a confirmed creation year."
   },
   {
     "id": "wp-gallery-33-328",
@@ -29,7 +31,9 @@
     "visibility": "public",
     "width": 1126,
     "height": 1440,
-    "slug": "freedom-328"
+    "slug": "freedom-328",
+    "category": "pigeons",
+    "sourceContext": "Shown in the original website’s 2016 collection. This is an archive collection date, not a confirmed creation year."
   },
   {
     "id": "wp-gallery-33-329",
@@ -45,7 +49,9 @@
     "visibility": "public",
     "width": 1331,
     "height": 1440,
-    "slug": "packs-329"
+    "slug": "packs-329",
+    "category": "pigeons",
+    "sourceContext": "Shown in the original website’s 2016 collection. This is an archive collection date, not a confirmed creation year."
   },
   {
     "id": "wp-gallery-33-322",
@@ -61,7 +67,9 @@
     "visibility": "public",
     "width": 1354,
     "height": 1440,
-    "slug": "village-pigeons-322"
+    "slug": "village-pigeons-322",
+    "category": "figures",
+    "sourceContext": "Shown in the original website’s 2016 collection. This is an archive collection date, not a confirmed creation year."
   },
   {
     "id": "wp-gallery-33-323",
@@ -77,7 +85,9 @@
     "visibility": "public",
     "width": 1114,
     "height": 1440,
-    "slug": "traditional-malay-lifestyle-323"
+    "slug": "traditional-malay-lifestyle-323",
+    "category": "figures",
+    "sourceContext": "Shown in the original website’s 2016 collection. This is an archive collection date, not a confirmed creation year."
   },
   {
     "id": "wp-gallery-33-324",
@@ -93,7 +103,9 @@
     "visibility": "public",
     "width": 1130,
     "height": 1440,
-    "slug": "traditional-malay-family-lifestyle-324"
+    "slug": "traditional-malay-family-lifestyle-324",
+    "category": "figures",
+    "sourceContext": "Shown in the original website’s 2016 collection. This is an archive collection date, not a confirmed creation year."
   },
   {
     "id": "wp-gallery-33-325",
@@ -109,7 +121,9 @@
     "visibility": "public",
     "width": 1347,
     "height": 1440,
-    "slug": "village-flute-playing-325"
+    "slug": "village-flute-playing-325",
+    "category": "figures",
+    "sourceContext": "Shown in the original website’s 2016 collection. This is an archive collection date, not a confirmed creation year."
   },
   {
     "id": "wp-gallery-33-326",
@@ -125,7 +139,9 @@
     "visibility": "public",
     "width": 1357,
     "height": 1440,
-    "slug": "village-birds-feeding-326"
+    "slug": "village-birds-feeding-326",
+    "category": "figures",
+    "sourceContext": "Shown in the original website’s 2016 collection. This is an archive collection date, not a confirmed creation year."
   },
   {
     "id": "wp-gallery-33-330",
@@ -141,7 +157,9 @@
     "visibility": "public",
     "width": 1369,
     "height": 1440,
-    "slug": "mirror-330"
+    "slug": "mirror-330",
+    "category": "pigeons",
+    "sourceContext": "Shown in the original website’s 2016 collection. This is an archive collection date, not a confirmed creation year."
   },
   {
     "id": "wp-gallery-33-331",
@@ -157,7 +175,9 @@
     "visibility": "public",
     "width": 1353,
     "height": 1440,
-    "slug": "taste-of-autumn-331"
+    "slug": "taste-of-autumn-331",
+    "category": "pigeons",
+    "sourceContext": "Shown in the original website’s 2016 collection. This is an archive collection date, not a confirmed creation year."
   },
   {
     "id": "wp-gallery-33-332",
@@ -173,7 +193,9 @@
     "visibility": "public",
     "width": 1358,
     "height": 1440,
-    "slug": "busy-bazaar-332"
+    "slug": "busy-bazaar-332",
+    "category": "pigeons",
+    "sourceContext": "Shown in the original website’s 2016 collection. This is an archive collection date, not a confirmed creation year."
   },
   {
     "id": "wp-gallery-33-333",
@@ -189,6 +211,46 @@
     "visibility": "public",
     "width": 1358,
     "height": 1440,
-    "slug": "colorful-life-333"
+    "slug": "colorful-life-333",
+    "category": "pigeons",
+    "sourceContext": "Shown in the original website’s 2016 collection. This is an archive collection date, not a confirmed creation year."
+  },
+  {
+    "id": "wp-attachment-40",
+    "title": "Peaceful Life",
+    "descriptiveLabel": "Peaceful Life",
+    "image": "/media/art-bca4459f8686a13e.webp",
+    "series": "Earlier published works",
+    "category": "figures",
+    "year": 2007,
+    "medium": "Oil painting",
+    "dimensions": "76.5 × 97 cm",
+    "sourceAttachmentId": 40,
+    "sourceArticleId": 41,
+    "sourceArticleRoute": "/articles/new-paintings-in-dai-ichi-modern-art-gallery/",
+    "sourceContext": "Published on the original artist website in “New Paintings in Dai Ichi Modern Art Gallery”. The original caption records the title, oil painting medium, year and dimensions.",
+    "visibility": "public",
+    "slug": "peaceful-life-40",
+    "width": 412,
+    "height": 325
+  },
+  {
+    "id": "wp-attachment-39",
+    "title": "Kampung Life",
+    "descriptiveLabel": "Kampung Life",
+    "image": "/media/art-086138231061616f.webp",
+    "series": "Earlier published works",
+    "category": "figures",
+    "year": 2007,
+    "medium": "Oil painting",
+    "dimensions": "81.5 × 76.5 cm",
+    "sourceAttachmentId": 39,
+    "sourceArticleId": 41,
+    "sourceArticleRoute": "/articles/new-paintings-in-dai-ichi-modern-art-gallery/",
+    "sourceContext": "Published on the original artist website in “New Paintings in Dai Ichi Modern Art Gallery”. The original caption records the title, oil painting medium, year and dimensions.",
+    "visibility": "public",
+    "slug": "kampung-life-39",
+    "width": 252,
+    "height": 269
   }
 ]

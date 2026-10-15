@@ -1,11 +1,12 @@
 ---
 import { href, formatDate } from '../lib/site';
+import { articleSection, sectionLabels, languageLabel, shortSummary } from '../lib/editorial';
 const { entries } = Astro.props;
 ---
 <div class="article-list">
-  {entries.map(entry => <article class="article-row" data-archive-entry data-kind={entry.data.kind} data-search={`${entry.data.title} ${entry.data.tags.join(' ')} ${entry.data.date}`}>
-    <div class="article-meta"><time datetime={entry.data.date}>{formatDate(entry.data.date)}</time><span>{entry.data.kind === 'exhibition' ? 'Exhibition' : entry.data.kind === 'interview' ? 'Interview' : 'From the archive'}</span></div>
-    <div><h2><a href={href(entry.data.route)}>{entry.data.title}</a></h2><p>{entry.data.summary}</p></div>
+  {entries.map(entry => <article class="article-row" data-archive-entry data-kind={articleSection(entry)} data-language={entry.data.language} data-search={`${entry.data.title} ${entry.data.summary} ${shortSummary(entry)} ${entry.data.tags.join(' ')} ${entry.data.date} ${entry.data.eventStart || ''} ${entry.data.eventVenue || ''}`}>
+    <div class="article-meta"><time datetime={entry.data.date}>Published {formatDate(entry.data.date)}</time><span>{sectionLabels[articleSection(entry)]}</span><span class="language-badge">{languageLabel(entry.data.language)}</span></div>
+    <div><h2><a href={href(entry.data.route)}>{entry.data.title}</a></h2>{entry.data.eventStart && <p class="event-when">Event: {formatDate(entry.data.eventStart)}{entry.data.eventEnd && ` – ${formatDate(entry.data.eventEnd)}`} · {entry.data.eventVenue}</p>}<p>{shortSummary(entry)}</p></div>
     <a class="article-arrow" href={href(entry.data.route)} aria-label={`Read ${entry.data.title}`}>↗</a>
   </article>)}
 </div>

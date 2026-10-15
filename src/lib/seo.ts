@@ -1,7 +1,7 @@
 import { artist } from '../data/artist';
 import { href } from './site';
 
-export const artworkPath = (work: { title: string | null; sourcePictureId: number; slug?: string }) => {
+export const artworkPath = (work: { title: string | null; sourcePictureId?: number; slug?: string }) => {
   const label = (work.title || 'archive-painting').toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
   return `/works/${work.slug || `${label}-${work.sourcePictureId}`}/`;
 };
@@ -16,6 +16,7 @@ export function structuredData(options: {
   const personId = `${home}#artist`;
   const person = {
     '@type': 'Person', '@id': personId, name: artist.name, alternateName: artist.chineseName,
+    familyName: artist.familyName, givenName: artist.givenName,
     url: absolute('/about/'), description: artist.description,
     image: absolute(artist.portrait), jobTitle: 'Artist and painter',
     nationality: { '@type': 'Country', name: 'Malaysia' },
@@ -27,8 +28,8 @@ export function structuredData(options: {
   const breadcrumbs: Record<string, unknown>[] = [{ '@type': 'ListItem', position: 1, name: 'Home', item: home }];
   if (canonical.href !== home) {
     const relative = canonical.pathname.replace(import.meta.env.BASE_URL.replace(/\/$/, ''), '');
-    if (relative.startsWith('/articles/') && relative !== '/articles/') breadcrumbs.push({ '@type': 'ListItem', position: 2, name: 'Archive', item: absolute('/articles/') });
-    if (relative.startsWith('/works/') && relative !== '/works/') breadcrumbs.push({ '@type': 'ListItem', position: 2, name: 'Works', item: absolute('/works/') });
+    if (relative.startsWith('/articles/') && relative !== '/articles/') breadcrumbs.push({ '@type': 'ListItem', position: 2, name: 'Articles & Events', item: absolute('/articles/') });
+    if (relative.startsWith('/works/') && relative !== '/works/') breadcrumbs.push({ '@type': 'ListItem', position: 2, name: 'Artworks', item: absolute('/works/') });
     breadcrumbs.push({ '@type': 'ListItem', position: breadcrumbs.length + 1, name: title, item: canonical.href });
   }
   return {

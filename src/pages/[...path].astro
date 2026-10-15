@@ -4,14 +4,17 @@ import Base from '../layouts/Base.astro';
 import { href } from '../lib/site';
 export async function getStaticPaths() {
   const pages = await getCollection('pages', ({ data }) => !data.draft);
-  return pages.filter(p => !['/works/','/contact/','/interviews/'].includes(p.data.route))
+  return pages.filter(p => !['/works/','/contact/','/interviews/','/about/'].includes(p.data.route))
     .map(entry => ({ params: { path: entry.data.route.replace(/^\/|\/$/g,'') }, props: { entry } }));
 }
 const { entry } = Astro.props;
 const { Content } = await render(entry);
-const isAbout = entry.data.wordpressId === 8;
-const person = Astro.site ? { '@id': `${new URL(href('/'),Astro.site).href}#artist` } : undefined;
+const isStatement = entry.data.wordpressId === 217;
+const title = isStatement ? 'The artist’s statement' : entry.data.wordpressId === 226 ? 'A Gentleman Artist' : entry.data.title;
 ---
-<Base title={isAbout ? 'Malaysian Artist Biography' : entry.data.title} description={isAbout ? 'Keng Seng Choo 龚明金, an established Malaysian artist born in Alor Setar in 1945. Explore his oil painting, Nanyang education, career and collecting history.' : entry.data.summary} pageType={isAbout ? 'ProfilePage' : 'WebPage'} mainEntity={isAbout ? person : undefined}>
-  <article class:list={['content-page wrap', { 'about-page': isAbout }]}><header class="page-heading"><p class="eyebrow">{isAbout ? 'THE ARTIST' : entry.data.wordpressId === 227 ? 'COLLECTION & CATALOGUE' : 'WORDS & PERSPECTIVES'}</p><h1>{isAbout ? 'Keng Seng Choo' : entry.data.title}</h1>{isAbout && <p class="artist-name-zh" lang="zh">龚明金</p>}</header>{isAbout && <section class="profile-summary"><p>Keng Seng Choo is an established Malaysian artist whose paintings connect figurative expression, rural life and the symbolic world of pigeons. His oil painting practice sits within a wider career documented by galleries, institutional collections and auction records.</p><p lang="zh">龚明金的艺术植根于马来西亚生活，以人物、乡情与鸽子题材，呈现富有个人特色的色彩与情感。</p><a class="text-link" href={href('/collectors/')}>Recognition &amp; collecting history ↗</a></section>}<div class="prose">{isAbout && <p class="archive-note">Biography preserved from the original artist website.</p>}<div class="original-biography"><Content /></div></div><footer class="article-end"><span lang="zh">以艺术为伴</span><a class="text-link" href={href('/works/')}>Explore the works ↗</a></footer></article>
+<Base title={title} description={entry.data.summary}>
+  <article class="content-page wrap"><header class="page-heading"><p class="eyebrow">{entry.data.wordpressId === 227 ? 'COLLECTION & CATALOGUE' : 'WORDS & PERSPECTIVES'}</p><h1>{title}</h1></header>
+    {isStatement && <nav class="language-links" aria-label="Statement language"><a href="#statement-en">English</a><a href="#statement-zh" lang="zh">中文</a></nav>}
+    <div class="prose"><Content /></div><footer class="article-end"><a class="text-link" href={href('/about/')}>The artist ↗</a><a class="text-link" href={href('/works/')}>Explore the artworks ↗</a></footer>
+  </article>
 </Base>

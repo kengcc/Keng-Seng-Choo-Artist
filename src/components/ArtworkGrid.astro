@@ -1,7 +1,7 @@
 ---
 import { href } from '../lib/site';
 import { artworkPath } from '../lib/seo';
-interface Work { id: string; title: string | null; descriptiveLabel: string; image: string; series: string; sourcePictureId: number; width?: number; height?: number; }
+interface Work { id: string; title: string | null; descriptiveLabel: string; image: string; series: string; sourcePictureId?: number; slug?: string; width?: number; height?: number; }
 interface Props { works: Work[]; compact?: boolean; }
 const { works, compact = false } = Astro.props;
 ---
