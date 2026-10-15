@@ -1,9 +1,9 @@
 import { artist } from '../data/artist';
 import { href } from './site';
 
-export const artworkPath = (work: { title: string | null; sourcePictureId: number }) => {
+export const artworkPath = (work: { title: string | null; sourcePictureId: number; slug?: string }) => {
   const label = (work.title || 'archive-painting').toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
-  return `/works/${label}-${work.sourcePictureId}/`;
+  return `/works/${work.slug || `${label}-${work.sourcePictureId}`}/`;
 };
 
 export function structuredData(options: {

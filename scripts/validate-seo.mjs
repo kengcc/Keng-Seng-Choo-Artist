@@ -6,6 +6,7 @@ import works from '../src/data/artworks.json' with { type: 'json' };
 const require=createRequire(import.meta.url);
 const domino=require('@mixmark-io/domino');
 const root=path.resolve('dist');
+const configuredOrigin=process.env.SITE_URL ? new URL(process.env.SITE_URL).origin : undefined;
 const files=[];const errors=[];
 function walk(dir){for(const e of fs.readdirSync(dir,{withFileTypes:true})){const f=path.join(dir,e.name);if(e.isDirectory())walk(f);else if(f.endsWith('.html'))files.push(f);}}
 walk(root);
@@ -16,7 +17,8 @@ for(const f of files){
   const canonical=doc.querySelector('link[rel=canonical]')?.getAttribute('href');
   if(!canonical){errors.push(`${f}: missing canonical`);continue;}
   const url=new URL(canonical);
-  if(['kengsengchoo.com','www.kengsengchoo.com'].includes(url.hostname))errors.push('Unowned custom domain used in canonical');
+  if(configuredOrigin&&url.origin!==configuredOrigin)errors.push(`${f}: canonical differs from configured hosting origin`);
+  if(url.protocol!=='https:')errors.push(`${f}: canonical must use HTTPS`);
   const script=doc.querySelector('script[type="application/ld+json"]');
   if(!script){errors.push(`${f}: missing structured data`);continue;}
   try{

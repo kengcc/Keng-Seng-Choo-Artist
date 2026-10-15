@@ -14,7 +14,7 @@ Use `/articles/your-stable-slug/` for the route and the same slug in the `slug` 
 
 Keep article publication dates distinct from exhibition dates in the body. Confirm current facts rather than treating historical statements or photograph dates as current artwork metadata. Archives should preserve their original dates.
 
-The 2016 public paintings are in `src/data/artworks.json`. Artwork titles come from the original gallery or article captions. Unknown fields remain null. Recovered collection candidates live outside this site and require an explicit selection before inclusion.
+The 2016 public paintings are in `src/data/artworks.json`. Artwork titles come from the original gallery or article captions. Unknown fields remain null. Preserve each painting's `slug` when correcting its title so its established URL stays stable. Recovered collection candidates live outside this site and require an explicit selection before inclusion.
 
 ## Preview and checks
 

@@ -30,7 +30,7 @@ const publicPages = ['/','/works/','/about/','/about/artist-statement/','/about/
   '/collections/praise-of-pigeons/','/articles/','/interviews/','/exhibitions/','/contact/','/collectors/'];
 const artworkRoutes = works.map(work => {
   const label=(work.title||'archive-painting').toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'');
-  return {route:`/works/${label}-${work.sourcePictureId}/`,image:work.image};
+  return {route:`/works/${work.slug || `${label}-${work.sourcePictureId}`}/`,image:work.image};
 });
 const articles = fs.readdirSync('src/content/articles').filter(n=>n.endsWith('.md')).map(filename => {
   const source = fs.readFileSync(path.join('src/content/articles',filename),'utf8');
