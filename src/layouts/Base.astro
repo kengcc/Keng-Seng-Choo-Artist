@@ -26,8 +26,7 @@ const nav = [['Works','/works/'],['About','/about/'],['Collectors','/collectors/
       (() => {
         let saved;
         try { saved = localStorage.getItem('ksc-theme'); } catch {}
-        const theme = saved === 'light' || saved === 'dark' ? saved :
-          (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+        const theme = saved === 'dark' ? 'dark' : 'light';
         document.documentElement.dataset.theme = theme;
         document.querySelector('meta[name="theme-color"]')?.setAttribute('content', theme === 'dark' ? '#191f1d' : '#f7f5ef');
       })();
