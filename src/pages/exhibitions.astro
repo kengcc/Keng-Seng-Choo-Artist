@@ -3,16 +3,25 @@ import Base from '../layouts/Base.astro';
 import ArticleList from '../components/ArticleList.astro';
 import { publicArticles, href } from '../lib/site';
 import { articleSection } from '../lib/editorial';
-const entries = (await publicArticles()).filter(p => articleSection(p) === 'events' && !p.data.duplicateOf);
+import earlierExhibitions from '../data/earlier-exhibitions.json';
+import references from '../data/references.json';
+import SourceReferences from '../components/SourceReferences.astro';
+const entries = (await publicArticles()).filter(p => (articleSection(p) === 'events' || (p.data.kind === 'exhibition' && p.data.eventStart)) && !p.data.duplicateOf);
 const dated = entries.filter(entry => entry.data.eventStart).sort((a,b) => b.data.eventStart!.localeCompare(a.data.eventStart!));
 const undated = entries.filter(entry => !entry.data.eventStart);
 const years = [...new Set(dated.map(entry => entry.data.eventStart!.slice(0,4)))];
+const earlier = [...earlierExhibitions].sort((a,b) => b.year - a.year);
+const source = (id: string) => references.find(source => source.id === id)!;
 ---
 <Base title="Exhibitions — A Documented History" description="Explore Keng Seng Choo’s exhibition history, with dated records from museums, galleries and organisers alongside his original website archive.">
-  <section class="page-heading wrap"><p class="eyebrow">EXHIBITIONS · <span lang="zh">历年展览</span></p><h1>Art, shared with others.</h1><p>A history of exhibitions in Malaysia and abroad, bringing together museum records, gallery catalogues and the artist’s own archive.</p><p lang="zh">汇集美术馆、画廊、主办方与原网站资料，循着展览记录认识龚明金的艺术历程。</p><nav class="section-jumps" aria-label="Exhibition sections"><a href="#timeline">Dated exhibitions</a><a href="#announcements">More from the archive</a><a href={href('/articles/')}>Articles &amp; interviews</a></nav></section>
+  <section class="page-heading wrap"><p class="eyebrow">EXHIBITIONS · <span lang="zh">历年展览</span></p><h1>Art, shared with others.</h1><p>A history of exhibitions in Malaysia and abroad, bringing together museum records, gallery catalogues and the artist’s own archive.</p><p lang="zh">汇集美术馆、画廊、主办方与原网站资料，循着展览记录认识龚明金的艺术历程。</p><nav class="section-jumps" aria-label="Exhibition sections"><a href="#timeline">Dated exhibitions</a><a href="#earlier-records">Earlier exhibition records</a><a href="#announcements">More from the archive</a><a href={href('/articles/')}>Articles &amp; interviews</a></nav></section>
   <section class="wrap exhibition-timeline" id="timeline" aria-label="Exhibition timeline">
     {years.map(year => <section class="exhibition-year"><h2>{year}</h2><ArticleList entries={dated.filter(entry => entry.data.eventStart!.startsWith(year))} /></section>)}
     <p class="archive-explanation">Ordered by confirmed exhibition date. Each entry distinguishes the event dates from the date its article was published. This is a selected, documented history; further records are added as sources become available.</p>
+  </section>
+  <section class="wrap section" id="earlier-records"><div class="section-heading"><div><p class="eyebrow">1966–2007 · <span lang="zh">早期展览记录</span></p><h2>From the gallery biographies</h2></div></div><p class="exhibition-intro">These retrospective gallery profiles record the exhibition year, rather than exact opening and closing dates. Original exhibition titles are retained, with source links for each entry.</p><p class="exhibition-intro" lang="zh">以下依画廊艺术家履历所载年份整理，按新至旧排列。英文展名保留来源写法；中文为本网站整理说明。尚未核实的月日不作补填，也不把履历记录当作当年的现场报道。</p>
+    <ol class="career-timeline earlier-exhibitions" aria-label="Earlier exhibition records, newest first">{earlier.map(entry => <li><span>{entry.year}</span><div><h3>{entry.title}</h3>{entry.venue && <p>{entry.venue}</p>}<p lang="zh">{entry.summaryZh}</p><p class="earlier-sources">Recorded by {entry.sourceIds.map((id,index) => <>{index > 0 && ' · '}<a href={source(id).url}>{id === 'artsafe' ? 'ArtSafe' : 'Younie Gallery'}</a></>)}</p></div></li>)}</ol>
+    <SourceReferences ids={['younie-artist-cn','artsafe']} />
   </section>
   <section class="wrap section" id="announcements"><div class="section-heading"><div><p class="eyebrow">ORIGINAL WEBSITE RECORDS</p><h2>More from the archive</h2></div></div><p class="exhibition-intro">Announcements and invitations whose complete event dates have not yet been added to the timeline. Dates below are article publication dates.</p><ArticleList entries={undated} /></section>
 </Base>

@@ -104,5 +104,19 @@
     "credit": "Three Sisters — Keng Seng Choo. Image source: ArtSafe, Singapore.",
     "selectedBy": "Owner authorised suitable reference-site imagery on 27 November 2026",
     "checkedAt": "2026-11-27"
+  },
+  {
+    "id": "wells-1980-work",
+    "image": "/media/reference-wells-1980-work.webp",
+    "width": 573,
+    "height": 922,
+    "bytes": 150046,
+    "sourceId": "wells-2023",
+    "sourcePage": "https://wells-auction.com/new/wp-content/uploads/2023/08/200823-Wells-Groups-Auction-E-Catalogue-view.pdf",
+    "originalImage": "https://wells-auction.com/new/wp-content/uploads/2023/08/200823-Wells-Groups-Auction-E-Catalogue-view.pdf",
+    "extractedFrom": "PDF page 79, embedded artwork image; page furniture excluded",
+    "credit": "龚明金，1980年作品。图片出处：Wells，2023年8月20日拍卖图录，第79页，拍品071；图录未列画名。",
+    "selectedBy": "Owner authorised suitable reference-site imagery on 27 November 2026",
+    "checkedAt": "2026-11-27"
   }
 ]

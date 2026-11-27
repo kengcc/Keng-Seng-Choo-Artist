@@ -6,7 +6,7 @@ const { entries } = Astro.props;
 <div class="article-list">
   {entries.map(entry => <article class="article-row" data-archive-entry data-kind={articleSection(entry)} data-language={entry.data.language} data-search={`${entry.data.title} ${entry.data.summary} ${shortSummary(entry)} ${entry.data.tags.join(' ')} ${entry.data.date} ${entry.data.eventStart || ''} ${entry.data.eventVenue || ''}`}>
     <div class="article-meta"><time datetime={entry.data.date}>Published {formatDate(entry.data.date)}</time><span>{sectionLabels[articleSection(entry)]}</span><span class="language-badge">{languageLabel(entry.data.language)}</span></div>
-    <div><h2><a href={href(entry.data.route)}>{entry.data.title}</a></h2>{entry.data.eventStart && <p class="event-when">Event: {formatDate(entry.data.eventStart)}{entry.data.eventEnd && ` – ${formatDate(entry.data.eventEnd)}`} · {entry.data.eventVenue}</p>}<p>{shortSummary(entry)}</p></div>
+    <div><h2><a href={href(entry.data.route)}>{entry.data.title}</a></h2>{entry.data.eventStart && <p class="event-when">Event: {formatDate(entry.data.eventStart)}{entry.data.eventEnd && ` – ${formatDate(entry.data.eventEnd)}`}{entry.data.eventVenue && ` · ${entry.data.eventVenue}`}</p>}<p>{shortSummary(entry)}</p></div>
     <a class="article-arrow" href={href(entry.data.route)} aria-label={`Read ${entry.data.title}`}>↗</a>
   </article>)}
 </div>

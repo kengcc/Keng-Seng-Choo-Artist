@@ -11,7 +11,7 @@ eventStart: "2022-09-10"
 eventEnd: "2022-10-09"
 eventVenue: "Wisma Kebudayaan Soka Gakkai Malaysia, Kuala Lumpur"
 tags: ["Soka Gakkai Malaysia", "Korea", "international exchange", "2022"]
-sourceIds: ["soka-2022"]
+sourceIds: ["soka-2022", "soka-2022-cn"]
 draft: false
 archived: false
 ---

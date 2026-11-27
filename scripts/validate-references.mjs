@@ -3,6 +3,7 @@ import path from 'node:path';
 import { parseFrontmatter } from '@astrojs/markdown-remark';
 import references from '../src/data/references.json' with { type: 'json' };
 import media from '../src/data/reference-media.json' with { type: 'json' };
+import earlierExhibitions from '../src/data/earlier-exhibitions.json' with { type: 'json' };
 
 const errors = [];
 const ids = new Set();
@@ -13,6 +14,14 @@ for (const source of references) {
   if (!/^\d{4}-\d{2}-\d{2}$/.test(source.checkedAt)) errors.push(`Missing reference check date: ${source.id}`);
 }
 const imageIds = new Set();
+const exhibitionIds = new Set();
+for (const entry of earlierExhibitions) {
+  if (exhibitionIds.has(entry.id)) errors.push(`Duplicate historical exhibition: ${entry.id}`);
+  exhibitionIds.add(entry.id);
+  if (!Number.isInteger(entry.year) || entry.year < 1900 || entry.year > new Date().getFullYear()) errors.push(`Invalid exhibition year: ${entry.id}`);
+  if (!entry.title || !entry.sourceIds.length) errors.push(`Missing exhibition title/source: ${entry.id}`);
+  for (const id of entry.sourceIds) if (!ids.has(id)) errors.push(`Unknown historical exhibition source: ${id}`);
+}
 for (const image of media) {
   if (imageIds.has(image.id)) errors.push(`Duplicate reference image: ${image.id}`);
   imageIds.add(image.id);
@@ -35,7 +44,7 @@ if (process.argv.includes('--live')) {
   for (let index = 0; index < urls.length; index += 4) {
     const batch = await Promise.all(urls.slice(index, index + 4).map(async url => {
       try {
-        const response = await fetch(url, {signal:AbortSignal.timeout(45000), headers:{'User-Agent':'Mozilla/5.0 (compatible; ArtistArchiveSourceCheck/1.0)'}});
+        const response = await fetch(url, {signal:AbortSignal.timeout(45000), headers:{'User-Agent':'Mozilla/5.0'}});
         const body = await response.arrayBuffer();
         const result = {url, status:response.status, finalUrl:response.url, contentType:response.headers.get('content-type'), bytes:body.byteLength};
         if (!response.ok || body.byteLength === 0) errors.push(`Reference unavailable: ${url} (${response.status})`);
@@ -48,8 +57,8 @@ if (process.argv.includes('--live')) {
     results.push(...batch);
   }
 }
-const report = {checkedAt:new Date().toISOString(),references:references.length,selectedImages:media.length,liveChecks:results,errors};
+const report = {checkedAt:new Date().toISOString(),references:references.length,selectedImages:media.length,earlierExhibitions:earlierExhibitions.length,liveChecks:results,errors};
 fs.mkdirSync('reports',{recursive:true});
 fs.writeFileSync('reports/reference-validation.json', JSON.stringify(report,null,2)+'\n');
-console.log(JSON.stringify({references:references.length,selectedImages:media.length,liveChecks:results.length,errors},null,2));
+console.log(JSON.stringify({references:references.length,selectedImages:media.length,earlierExhibitions:earlierExhibitions.length,liveChecks:results.length,errors},null,2));
 if (errors.length) process.exitCode = 1;

@@ -40,6 +40,8 @@ The main navigation is The Artist, Artworks, Exhibitions, Articles, Collections,
 
 New summaries may use `sourceIds` from `src/data/references.json`. Check the original page, confirm the artist identity and record the check date before linking. Use `archived: false` and the actual new article publication date; historical exhibition dates belong in the event fields. `referenceImageId` selects a credited image from `reference-media.json`. The owner authorised suitable imagery from verified external reference sites on 27 November 2026; recovered private material remains excluded.
 
+Earlier year-only exhibition records live in `src/data/earlier-exhibitions.json`, separately labelled on the exhibitions page. Keep source IDs, date precision and attribution; do not manufacture opening dates from a year. The artist page's selected milestones are ordered newest first. A dated press article about an exhibition can appear in the exhibition timeline while retaining its press classification.
+
 Articles may include `section` (`events`, `press`, `writing`, `artworks`, or `updates`). Use `press` for reports and reviews even when they discuss exhibitions. Do not imply a contributor's writing was authored by the artist. Language labels and the archive filter use the `language` field. An original duplicate may be omitted from listings while its page and canonical link remain intact.
 
 For confirmed dates in the original announcement, add `eventStart`, optional `eventEnd` (ISO dates), and `eventVenue`. Keep the original article `date` intact; it is displayed as the publication date. Never infer an event year from a publication date alone.

@@ -43,6 +43,8 @@ The original 1985 interview retains its date and scans, with an additional Kyoto
 
 ## Artist identity and consolidated visitor pages
 
+The follow-up Chinese-source search adds four more bilingual summaries, 24 clearly attributed year-only exhibition records, a source-credited illustration of a catalogued 1980 work, and source/date improvements to existing articles. The artist milestone list runs newest first. Library holdings, auction listings and retrospective gallery biographies are explicitly distinguished from artwork ownership, completed sales and contemporary news. See `chinese-history-expansion-2026-11-27.md` for exact source scope and unresolved date conflicts.
+
 The owner confirmed Keng as the family name and Seng Choo as the given name. Person structured data records `familyName: Keng` and `givenName: Seng Choo`; display names remain Keng Seng Choo. The homepage keeps the given name together.
 
 Career and collecting evidence is consolidated on `/about/`, with practical questions at `/collectors/`. All historical article URLs remain available. The gallery now also includes Peaceful Life and Kampung Life, with the oil painting medium, 2007 creation year and dimensions from the original WordPress article 41 captions. No current price or availability is inferred.
