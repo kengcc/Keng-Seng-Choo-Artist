@@ -2,8 +2,8 @@
 import artworks from '../data/external-artworks.json';
 import media from '../data/reference-media.json';
 import { href, formatDate } from '../lib/site';
-const { group } = Astro.props;
-const works = artworks.filter(work => work.group === group).sort((a,b) => (b.year ?? 0) - (a.year ?? 0) || a.title.localeCompare(b.title));
+const { group, hosts = [] } = Astro.props;
+const works = artworks.filter(work => (!group || work.group === group) && (!hosts.length || hosts.includes(work.host))).sort((a,b) => (b.year ?? 0) - (a.year ?? 0) || a.title.localeCompare(b.title));
 ---
 <div class="external-art-grid">
   {works.map(work => {
@@ -17,7 +17,7 @@ const works = artworks.filter(work => work.group === group).sort((a,b) => (b.yea
         {work.catalogueDate && <p class="catalogue-context">Auction: {formatDate(work.catalogueDate)}{work.catalogueEnd && ` – ${formatDate(work.catalogueEnd)}`} · Lot {work.lot}</p>}
         {work.note && <p>{work.note}</p>}
         <p class="image-credit">Artwork: Keng Seng Choo<br />Image source: {work.host}</p>
-        <a class="text-link" href={work.artworkPage}>View {group === 'auction' ? 'auction record' : 'at '+work.host}</a>
+        <a class="text-link" href={work.artworkPage}>View {work.group === 'auction' ? 'auction record' : 'at '+work.host}</a>
       </figcaption>
     </figure>;
   })}

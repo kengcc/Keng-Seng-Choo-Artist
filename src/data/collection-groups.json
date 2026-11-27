@@ -1,0 +1,52 @@
+[
+  {
+    "slug": "daiichi-art",
+    "title": "Daiichi Art",
+    "hosts": ["Daiichi Art"],
+    "coverId": "sisterly-love-2020",
+    "description": "Oil paintings, watercolours, tempera and ink wash, spanning village life, figures, flowers and pigeons.",
+    "descriptionZh": "从乡村生活、人物、花卉到鸽子，欣赏不同时期的油画、水彩、蛋彩与水墨创作。",
+    "label": "GALLERY COLLECTION",
+    "featured": true
+  },
+  {
+    "slug": "kl-lifestyle-art-space",
+    "title": "KL Lifestyle Art Space",
+    "hosts": ["KL Lifestyle Art Space"],
+    "coverId": "klas-women-resting-1994",
+    "description": "Early batik, watercolours and figurative oil paintings featured in KLAS auction catalogues.",
+    "descriptionZh": "收录于 KLAS 拍卖图录的早期蜡染、水彩与人物油画作品。",
+    "label": "AUCTION COLLECTION",
+    "featured": true
+  },
+  {
+    "slug": "henry-butcher",
+    "title": "Henry Butcher Art Auctioneers",
+    "hosts": ["Henry Butcher Art Auctioneers"],
+    "coverId": "henry-rural-life-1983",
+    "description": "Batik, watercolour and oil paintings, including Rural Life and Good Harvest.",
+    "descriptionZh": "蜡染、水彩与油画作品，包括 Rural Life 与 Good Harvest。",
+    "label": "AUCTION COLLECTION",
+    "featured": false
+  },
+  {
+    "slug": "artsafe",
+    "title": "ArtSafe, Singapore",
+    "hosts": ["ArtSafe, Singapore"],
+    "coverId": "three-sisters",
+    "description": "Three figurative oil paintings: Three Sisters, Mother and Daughter, and Gotong Rayon.",
+    "descriptionZh": "三幅人物油画：Three Sisters、Mother and Daughter 与 Gotong Rayon。",
+    "label": "GALLERY COLLECTION",
+    "featured": false
+  },
+  {
+    "slug": "other-auctions",
+    "title": "Wells & Davidson Auctions",
+    "hosts": ["Wells Auction", "Davidson Auctions"],
+    "coverId": "davidson-rubber-plantation-1974",
+    "description": "Earlier works on paper and batik from Wells and Davidson auction catalogues.",
+    "descriptionZh": "来自 Wells 与 Davidson 拍卖图录的早期纸本与蜡染作品。",
+    "label": "AUCTION COLLECTION",
+    "featured": false
+  }
+]

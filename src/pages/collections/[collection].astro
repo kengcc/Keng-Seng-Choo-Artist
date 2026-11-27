@@ -1,0 +1,30 @@
+---
+import Base from '../../layouts/Base.astro';
+import ExternalArtworks from '../../components/ExternalArtworks.astro';
+import CollectionToolbar from '../../components/CollectionToolbar.astro';
+import collections from '../../data/collection-groups.json';
+import artworks from '../../data/external-artworks.json';
+import media from '../../data/reference-media.json';
+import { href } from '../../lib/site';
+export function getStaticPaths() {
+  return collections.map(collection => ({params:{collection:collection.slug},props:{collection}}));
+}
+const { collection } = Astro.props;
+const works = artworks.filter(work => collection.hosts.includes(work.host));
+const cover = works.find(work => work.id === collection.coverId)!;
+const image = media.find(item => item.id === cover.referenceImageId)!;
+const auction = works.some(work => work.group === 'auction');
+---
+<Base title={`${collection.title} — Paintings`} description={`${collection.description} Explore ${works.length} paintings by Keng Seng Choo, with artwork details, credited images and original source links.`} image={image.image} pageType="CollectionPage">
+  <article class="wrap collections-page collection-detail">
+    <header class="page-heading"><a class="back-link" href={href('/collections/')}>All collections</a><p class="eyebrow">{collection.label} · {works.length} PAINTINGS</p><h1>{collection.title}</h1><p>{collection.description}</p><p lang="zh">{collection.descriptionZh}</p><nav class="section-jumps" aria-label="Browse collections">{collections.map(item => <a href={href(`/collections/${item.slug}/`)} aria-current={item.slug === collection.slug ? 'page' : undefined}>{item.slug === 'henry-butcher' ? 'Henry Butcher' : item.title}</a>)}</nav></header>
+    <div data-collection>
+      <CollectionToolbar works={works} />
+      <section class="collection-detail-works" data-collection-section aria-label={`Paintings from ${collection.title}`}>
+        <ExternalArtworks hosts={collection.hosts} />
+      </section>
+    </div>
+    {auction && <p class="collection-context">Each painting has one image and its most recent catalogue reference. Auction dates are separate from the year of creation.</p>}
+    <footer class="article-end"><a class="button" href={href('/collections/')}>Browse all collections</a><a class="text-link" href={href('/works/')}>The artist’s artwork archive</a></footer>
+  </article>
+</Base>

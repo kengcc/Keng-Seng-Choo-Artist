@@ -5,6 +5,7 @@ import references from '../src/data/references.json' with { type: 'json' };
 import media from '../src/data/reference-media.json' with { type: 'json' };
 import earlierExhibitions from '../src/data/earlier-exhibitions.json' with { type: 'json' };
 import artworks from '../src/data/external-artworks.json' with { type: 'json' };
+import collectionGroups from '../src/data/collection-groups.json' with { type: 'json' };
 
 const errors = [];
 const ids = new Set();
@@ -45,6 +46,16 @@ for (const work of artworks) {
   if (work.additionalSourceIds?.length || work.alternateTitles?.length) errors.push(`Only one latest public reference is allowed per painting: ${work.id}`);
   if (work.catalogueEnd && work.catalogueEnd < work.catalogueDate) errors.push(`Invalid auction date range: ${work.id}`);
   if (work.group === 'auction' && (!work.catalogueDate || !work.lot)) errors.push(`Missing auction date/lot: ${work.id}`);
+}
+const collectionSlugs = new Set();
+for (const collection of collectionGroups) {
+  if (collectionSlugs.has(collection.slug)) errors.push(`Duplicate collection route: ${collection.slug}`);
+  collectionSlugs.add(collection.slug);
+  const members = artworks.filter(work => collection.hosts.includes(work.host));
+  if (!members.length || !members.some(work => work.id === collection.coverId)) errors.push(`Invalid collection/cover: ${collection.slug}`);
+}
+for (const work of artworks) {
+  if (collectionGroups.filter(collection => collection.hosts.includes(work.host)).length !== 1) errors.push(`Artwork must belong to exactly one collection: ${work.id}`);
 }
 for (const filename of fs.readdirSync('src/content/articles').filter(name => name.endsWith('.md'))) {
   const { frontmatter: article } = parseFrontmatter(fs.readFileSync(path.join('src/content/articles', filename), 'utf8'));

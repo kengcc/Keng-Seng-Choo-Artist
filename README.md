@@ -6,7 +6,7 @@ A static artist portfolio and bilingual archive, built with Astro. Articles are 
 
 Use Node.js 24 or newer supported by Astro and install dependencies with `npm ci`. Run `npm run dev`, then open the local URL it prints. Run `npm run build` and `npm run validate` before publication.
 
-The website contains the 31 published WordPress articles plus fourteen sourced editorial additions, seven unrestricted legacy pages and 14 paintings in its original artwork archive. Exhibition history includes 24 earlier, year-only records from gallery biographies. The Collections & Galleries page links to institutional records and presents 59 illustrated gallery and auction works, with titles, dates where known, media, dimensions, credits and original source links. Search and medium filters help visitors browse the collection. The recovered private archive is kept outside this repository until a selection is made. The two near-duplicate articles retain their original records and routes.
+The website contains the 31 published WordPress articles plus fourteen sourced editorial additions, seven unrestricted legacy pages and 14 paintings in its original artwork archive. Exhibition history includes 24 earlier, year-only records from gallery biographies. The Collections & Galleries overview links to institutional records and five dedicated collection pages containing 59 illustrated gallery and auction works, with titles, dates where known, media, dimensions, credits and original source links. Each collection has search, medium filters and an image viewer. The recovered private archive is kept outside this repository until a selection is made. The two near-duplicate articles retain their original records and routes.
 
 ## Hosting
 

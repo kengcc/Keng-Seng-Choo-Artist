@@ -29,6 +29,7 @@ export function structuredData(options: {
   if (canonical.href !== home) {
     const relative = canonical.pathname.replace(import.meta.env.BASE_URL.replace(/\/$/, ''), '');
     if (relative.startsWith('/articles/') && relative !== '/articles/') breadcrumbs.push({ '@type': 'ListItem', position: 2, name: 'Articles & Events', item: absolute('/articles/') });
+    if (relative.startsWith('/collections/') && relative !== '/collections/') breadcrumbs.push({ '@type': 'ListItem', position: 2, name: 'Collections & Galleries', item: absolute('/collections/') });
     if (relative.startsWith('/works/') && relative !== '/works/') breadcrumbs.push({ '@type': 'ListItem', position: 2, name: 'Artworks', item: absolute('/works/') });
     breadcrumbs.push({ '@type': 'ListItem', position: breadcrumbs.length + 1, name: title, item: canonical.href });
   }

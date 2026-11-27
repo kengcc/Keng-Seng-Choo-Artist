@@ -4,34 +4,28 @@ import ReferenceFigure from '../components/ReferenceFigure.astro';
 import SourceReferences from '../components/SourceReferences.astro';
 import references from '../data/references.json';
 import artworks from '../data/external-artworks.json';
-import ExternalArtworks from '../components/ExternalArtworks.astro';
+import CollectionDirectoryCard from '../components/CollectionDirectoryCard.astro';
+import collections from '../data/collection-groups.json';
 import { href } from '../lib/site';
 const source = (id: string) => references.find(item => item.id === id)!;
 
 ---
 <Base title="Collections & Galleries" description="Explore Keng Seng Choo’s paintings through museum records, external gallery collections and dated auction catalogues, with credited artwork images and original source links." pageType="CollectionPage">
   <article class="wrap collections-page">
-    <header class="page-heading"><p class="eyebrow">COLLECTIONS &amp; GALLERIES · <span lang="zh">机构与画廊记录</span></p><h1>Beyond the studio.</h1><p>Discover more of Keng Seng Choo’s work through museums, galleries and published catalogues. Follow each reference to see the original record.</p><p lang="zh">从美术馆图录、画廊作品页与历年拍卖记录，进一步认识龚明金的创作。</p><nav class="section-jumps" aria-label="Collections sections"><a href="#museums">Museum &amp; exhibition records</a><a href="#galleries">Works on gallery websites</a><a href="#catalogues">Auction archive</a></nav></header>
+    <header class="page-heading"><p class="eyebrow">COLLECTIONS &amp; GALLERIES · <span lang="zh">机构与画廊记录</span></p><h1>Beyond the studio.</h1><p>Discover more of Keng Seng Choo’s work through museums, galleries and published catalogues. Choose a gallery or auction collection to explore the paintings, artwork details and original references.</p><p lang="zh">从美术馆图录、画廊作品页与历年拍卖记录，进一步认识龚明金的创作。</p><nav class="section-jumps" aria-label="Collections sections"><a href="#museums">Museum &amp; exhibition records</a><a href="#galleries">Featured collections</a><a href="#catalogues">More collections</a></nav></header>
     <section class="institution-feature" id="museums">
       <div><p class="eyebrow">AN INSTITUTIONAL PERSPECTIVE</p><h2>Bank Negara Malaysia</h2><div class="prose"><p>The museum’s <a href={source('bnm-colour').url}><em>Drops of Colour</em></a> exhibition names Keng Seng Choo among artists represented in the Bank’s collection. Its <a href={source('bnm-fishing').url}><em>Keringat</em> online catalogue</a> also discusses his watercolour <em>Fishing Village</em>.</p><p>The coastal scene offers another view of an artist whose practice spans figures, pigeons, batik and watercolour.</p></div><a class="text-link" href={href('/articles/fishing-village-bank-negara-keringat/')}>Read about Fishing Village</a></div>
       <ReferenceFigure id="bnm-fishing-village" alt="Fishing Village by Keng Seng Choo, a pale watercolour of a coastal settlement and boats" />
     </section>
     <section class="section"><div class="story-links"><a href={href('/articles/maybank-of-moments-and-memories-2019/')}><span class="eyebrow">MAYBANK FOUNDATION · 2019</span><strong>Of Moments and Memories</strong><span>A watercolour exhibition catalogue documenting Kampung Nelayan, 1992.</span></a><a href={href('/articles/taipei-asian-federation-watercolor-1987/')}><span class="eyebrow">TAIPEI FINE ARTS MUSEUM · 1987</span><strong>An international exhibition record</strong><span>The museum archive names him in the Asian Federation of Watercolor exhibition.</span></a></div></section>
     <section class="prose"><h2>Penang State Art Gallery</h2><p>Keng Seng Choo is included in <a href={href('/articles/penang-state-art-gallery-collection-catalogue/')}><em>Penang State Art Gallery permanent collection 1965–2011</em></a>, a catalogue of the gallery’s collection edited by Tan Chee Khuan. The book is held by National Gallery Singapore’s Rotunda Library &amp; Archive.</p></section>
-    <div data-collection id="galleries">
-    <div class="collection-toolbar" hidden>
-      <label class="archive-search"><span class="sr-only">Search paintings</span><input type="search" placeholder="Search title, year or gallery…" data-collection-search /><span aria-hidden="true">⌕</span></label>
-      <label class="collection-medium"><span class="sr-only">Painting medium</span><select aria-label="Painting medium" data-collection-medium><option value="all">All media</option><option value="oil">Oil on canvas</option><option value="watercolour">Watercolour</option><option value="batik">Batik</option><option value="tempera">Tempera</option><option value="ink">Ink &amp; ink wash</option></select></label>
-      <p class="collection-count" aria-live="polite">{artworks.length} paintings</p>
-    </div>
-    <section class="section" data-collection-section><div class="section-heading"><div><p class="eyebrow">EXPLORE WORKS ELSEWHERE</p><h2>On gallery websites</h2></div></div><p class="exhibition-intro">Paintings in oil, watercolour, tempera and ink wash, from village scenes and everyday life to pigeons and figures. Explore each work in more detail on the linked gallery website.</p>
-      <ExternalArtworks group="gallery" />
-      <div class="gallery-directory"><div><h3>Daiichi Art</h3><p>Artist biography and a collection of paintings across different periods.</p><a href={source('daiichi').url}>Explore the artist’s collection at Daiichi Art</a></div><div><h3>ArtSafe, Singapore</h3><p>An artist profile illustrating oil paintings, including <em>Three Sisters</em> and <em>Mother and Daughter</em>.</p><a href={source('artsafe').url}>Read the ArtSafe profile</a></div><div><h3>Younie Gallery</h3><p>A bilingual biography, career history and exhibition archive.</p><a href={source('younie-artist').url}>Read the Younie Gallery profile</a></div></div>
+    <section class="section" id="galleries"><div class="section-heading"><div><p class="eyebrow">{artworks.length} PAINTINGS · {collections.length} COLLECTIONS</p><h2>Explore the collections.</h2></div></div><p class="exhibition-intro">Start with the larger collections at Daiichi Art and KL Lifestyle Art Space. Each has its own page, with search, medium filters and full artwork details.</p>
+      <div class="collection-directory-featured">{collections.filter(collection => collection.featured).map(collection => <CollectionDirectoryCard collection={collection} />)}</div>
     </section>
-    <section class="section" id="catalogues" data-collection-section><div class="section-heading"><div><p class="eyebrow">EARLIER WORKS &amp; PUBLISHED CATALOGUES</p><h2>Auction archive</h2></div></div><p class="exhibition-intro">Batik, watercolour and oil paintings featured in past auctions. Each painting is presented with one image and its most recent catalogue reference. Auction dates are separate from the year of creation.</p>
-      <ExternalArtworks group="auction" />
+    <section class="section collection-directory-more" id="catalogues"><div class="section-heading"><div><p class="eyebrow">MORE PAINTINGS TO DISCOVER</p><h2>More collections.</h2></div></div>
+      <div class="collection-directory-small">{collections.filter(collection => !collection.featured).map(collection => <CollectionDirectoryCard collection={collection} />)}</div>
     </section>
-    </div>
+    <section class="collection-gallery-link"><h2>Younie Gallery</h2><p>Explore the artist’s biography and exhibitions at <a href={source('younie-artist').url}>Younie Gallery</a>.</p></section>
     <SourceReferences ids={['bnm-fishing','bnm-colour','maybank-2019','daiichi','artsafe','younie-artist']} />
     <footer class="article-end"><a class="button" href={href('/works/')}>Explore the artist’s own archive</a><a class="text-link" href={href('/contact/')}>Contact</a></footer>
   </article>

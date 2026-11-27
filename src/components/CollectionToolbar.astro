@@ -1,0 +1,11 @@
+---
+const { works } = Astro.props;
+const media = [
+  ['oil','Oil painting'],['watercolour','Watercolour'],['batik','Batik'],['tempera','Tempera'],['ink','Ink & ink wash']
+].filter(([id]) => works.some(work => work.mediumGroup === id));
+---
+<div class="collection-toolbar" hidden>
+  <label class="archive-search"><span class="sr-only">Search paintings</span><input type="search" placeholder="Search title or year…" data-collection-search /><span aria-hidden="true">⌕</span></label>
+  <label class="collection-medium"><span class="sr-only">Painting medium</span><select aria-label="Painting medium" data-collection-medium><option value="all">All media</option>{media.map(([id,label]) => <option value={id}>{label}</option>)}</select></label>
+  <p class="collection-count" aria-live="polite">{works.length} paintings</p>
+</div>

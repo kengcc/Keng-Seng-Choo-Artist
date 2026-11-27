@@ -1,0 +1,14 @@
+---
+import artworks from '../data/external-artworks.json';
+import media from '../data/reference-media.json';
+import { href } from '../lib/site';
+const { collection } = Astro.props;
+const works = artworks.filter(work => collection.hosts.includes(work.host));
+const cover = works.find(work => work.id === collection.coverId)!;
+const item = media.find(item => item.id === cover.referenceImageId)!;
+const route = `/collections/${collection.slug}/`;
+---
+<a class="collection-directory-card" href={href(route)}>
+  <div class="collection-cover"><img src={href(item.thumbnail || item.image)} width={item.width} height={item.height} loading="lazy" alt={`${cover.title}${cover.year ? `, ${cover.year}` : ''} — Keng Seng Choo`} /></div>
+  <div class="collection-card-copy"><p class="eyebrow">{collection.label}</p><div class="collection-card-title"><h3>{collection.title}</h3><span>{works.length} paintings</span></div><p>{collection.description}</p><span class="text-link">Explore the collection</span><p class="collection-cover-credit">{cover.title}{cover.year && `, ${cover.year}`} · Image: {cover.host}</p></div>
+</a>
