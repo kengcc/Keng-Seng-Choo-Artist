@@ -1,0 +1,25 @@
+---
+import artworks from '../data/external-artworks.json';
+import media from '../data/reference-media.json';
+import { href, formatDate } from '../lib/site';
+const { group } = Astro.props;
+const works = artworks.filter(work => work.group === group).sort((a,b) => (b.year ?? 0) - (a.year ?? 0) || a.title.localeCompare(b.title));
+---
+<div class="external-art-grid">
+  {works.map(work => {
+    const item = media.find(item => item.id === work.referenceImageId)!;
+    const caption = `${work.title}${work.year ? `, ${work.year}` : ''} — ${work.medium} · ${work.dimensions}. Artwork: Keng Seng Choo · Image source: ${work.host}`;
+    return <figure class="external-artwork" data-collection-work data-medium={work.mediumGroup} data-search={[work.title, work.titleZh, work.year, work.medium, work.host].filter(Boolean).join(' ')}>
+      <a class="external-art-image" href={href(item.image)} data-viewer-src={href(item.image)} data-viewer-caption={caption} aria-label={`Enlarge ${work.title}${work.year ? `, ${work.year}` : ''}`}><img src={href(item.thumbnail || item.image)} width={item.width} height={item.height} loading="lazy" decoding="async" alt={`${work.title}${work.year ? `, ${work.year}` : ''} — painting by Keng Seng Choo`} /></a>
+      <figcaption>
+        <h3>{work.title}{work.titleZh && <span class="artwork-title-zh" lang="zh">{work.titleZh}</span>}</h3>
+        <p class="external-art-details">{work.year && <span>{work.year} · </span>}{work.medium}<br />{work.dimensions}</p>
+        {work.catalogueDate && <p class="catalogue-context">Auction: {formatDate(work.catalogueDate)}{work.catalogueEnd && ` – ${formatDate(work.catalogueEnd)}`} · Lot {work.lot}</p>}
+        {work.note && <p>{work.note}</p>}
+        <p class="image-credit">Artwork: Keng Seng Choo<br />Image source: {work.host}</p>
+        <a class="text-link" href={work.artworkPage}>View {group === 'auction' ? 'auction record' : 'at '+work.host}</a>
+      </figcaption>
+    </figure>;
+  })}
+</div>
+<p class="collection-empty" hidden>No paintings in this section match your selection.</p>

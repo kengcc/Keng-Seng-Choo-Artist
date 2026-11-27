@@ -65,24 +65,30 @@ if (archive) {
 
 const dialog = document.querySelector<HTMLDialogElement>('.art-dialog')!;
 const triggers = [...document.querySelectorAll<HTMLElement>('[data-viewer-src], .prose a:has(img)')];
+let activeTriggers = triggers;
 let current = 0;
 let lastTrigger: HTMLElement | undefined;
 const image = dialog.querySelector<HTMLImageElement>('img')!;
 const previous = dialog.querySelector<HTMLButtonElement>('.viewer-prev')!;
 const next = dialog.querySelector<HTMLButtonElement>('.viewer-next')!;
 function show(index: number) {
-  current = (index + triggers.length) % triggers.length;
-  const trigger = triggers[current];
+  current = (index + activeTriggers.length) % activeTriggers.length;
+  const trigger = activeTriggers[current];
   image.src = trigger.dataset.viewerSrc || trigger.getAttribute('href') || '';
   image.alt = trigger.dataset.viewerCaption || trigger.querySelector('img')?.alt || 'Archive image';
   dialog.querySelector<HTMLElement>('.viewer-caption')!.textContent = image.alt;
-  dialog.querySelector<HTMLElement>('.viewer-count')!.textContent = `${current + 1} / ${triggers.length}`;
-  previous.disabled = next.disabled = triggers.length < 2;
+  dialog.querySelector<HTMLElement>('.viewer-count')!.textContent = `${current + 1} / ${activeTriggers.length}`;
+  previous.disabled = next.disabled = activeTriggers.length < 2;
 }
-triggers.forEach((trigger, index) => trigger.addEventListener('click', event => {
+triggers.forEach((trigger) => trigger.addEventListener('click', event => {
   const target = trigger.dataset.viewerSrc || trigger.getAttribute('href') || '';
   if (!/\.(webp|png|jpe?g|gif)(?:$|\?)/i.test(target)) return;
-  event.preventDefault(); lastTrigger = trigger; show(index); dialog.showModal();
+  event.preventDefault();
+  lastTrigger = trigger;
+  const collectionGroup = trigger.closest('[data-collection]');
+  activeTriggers = triggers.filter(item => !item.closest('[hidden]') && (!collectionGroup || collectionGroup.contains(item)));
+  show(activeTriggers.indexOf(trigger));
+  dialog.showModal();
 }));
 dialog.querySelector('.viewer-close')?.addEventListener('click', () => dialog.close());
 previous.addEventListener('click', () => show(current - 1));
@@ -92,3 +98,27 @@ dialog.addEventListener('keydown', event => {
   if (event.key === 'ArrowRight') { event.preventDefault(); show(current + 1); }
 });
 dialog.addEventListener('close', () => lastTrigger?.focus());
+
+const collection = document.querySelector<HTMLElement>('[data-collection]');
+if (collection) {
+  const toolbar = collection.querySelector<HTMLElement>('.collection-toolbar')!;
+  const search = collection.querySelector<HTMLInputElement>('[data-collection-search]')!;
+  const medium = collection.querySelector<HTMLSelectElement>('[data-collection-medium]')!;
+  const works = [...collection.querySelectorAll<HTMLElement>('[data-collection-work]')];
+  const update = () => {
+    const query = search.value.trim().toLocaleLowerCase();
+    let count = 0;
+    for (const work of works) {
+      const visible = (medium.value === 'all' || work.dataset.medium === medium.value) && work.dataset.search!.toLocaleLowerCase().includes(query);
+      work.hidden = !visible;
+      if (visible) count++;
+    }
+    collection.querySelector<HTMLElement>('.collection-count')!.textContent = `${count} ${count === 1 ? 'painting' : 'paintings'}`;
+    for (const section of collection.querySelectorAll<HTMLElement>('[data-collection-section]')) {
+      section.querySelector<HTMLElement>('.collection-empty')!.hidden = !!section.querySelector('[data-collection-work]:not([hidden])');
+    }
+  };
+  toolbar.hidden = false;
+  search.addEventListener('input', update);
+  medium.addEventListener('change', update);
+}

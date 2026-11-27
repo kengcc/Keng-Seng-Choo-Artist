@@ -3,14 +3,11 @@ import Base from '../layouts/Base.astro';
 import ReferenceFigure from '../components/ReferenceFigure.astro';
 import SourceReferences from '../components/SourceReferences.astro';
 import references from '../data/references.json';
-import media from '../data/reference-media.json';
+import artworks from '../data/external-artworks.json';
+import ExternalArtworks from '../components/ExternalArtworks.astro';
 import { href } from '../lib/site';
 const source = (id: string) => references.find(item => item.id === id)!;
-const selections = [
-  {id:'sisterly-love-2020',title:'Sisterly Love 姐妹情深',details:'2020 · Oil on canvas · 71 × 77 cm',host:'Daiichi Art'},
-  {id:'happy-together-2019',title:'Happy Together 欢乐在一起',details:'2019 · Oil on canvas · 71 × 77 cm',host:'Daiichi Art'},
-  {id:'three-sisters',title:'Three Sisters',details:'Oil on canvas · 92 × 86 cm',host:'ArtSafe, Singapore'},
-];
+
 ---
 <Base title="Collections & Galleries" description="Explore Keng Seng Choo’s paintings through museum records, external gallery collections and dated auction catalogues, with credited artwork images and original source links." pageType="CollectionPage">
   <article class="wrap collections-page">
@@ -21,14 +18,20 @@ const selections = [
     </section>
     <section class="section"><div class="story-links"><a href={href('/articles/maybank-of-moments-and-memories-2019/')}><span class="eyebrow">MAYBANK FOUNDATION · 2019</span><strong>Of Moments and Memories</strong><span>A watercolour exhibition catalogue documenting Kampung Nelayan, 1992.</span></a><a href={href('/articles/taipei-asian-federation-watercolor-1987/')}><span class="eyebrow">TAIPEI FINE ARTS MUSEUM · 1987</span><strong>An international exhibition record</strong><span>The museum archive names him in the Asian Federation of Watercolor exhibition.</span></a></div></section>
     <section class="prose"><h2>Penang State Art Gallery</h2><p>Keng Seng Choo is included in <a href={href('/articles/penang-state-art-gallery-collection-catalogue/')}><em>Penang State Art Gallery permanent collection 1965–2011</em></a>, a catalogue of the gallery’s collection edited by Tan Chee Khuan. The book is held by National Gallery Singapore’s Rotunda Library &amp; Archive.</p></section>
-    <section class="section" id="galleries"><div class="section-heading"><div><p class="eyebrow">EXPLORE WORKS ELSEWHERE</p><h2>On gallery websites</h2></div></div><p class="exhibition-intro">A selection of paintings illustrated on external gallery and art-service websites. Titles and recorded details follow the linked hosts; these references do not confirm current representation or availability.</p>
-      <div class="external-art-grid">{selections.map(work => {
-        const item = media.find(item => item.id === work.id)!;
-        return <figure class="external-artwork"><a class="external-art-image" href={item.artworkPage || item.sourcePage}><img src={href(item.image)} width={item.width} height={item.height} loading="lazy" alt={`${work.title} — painting by Keng Seng Choo`} /></a><figcaption><h3>{work.title}</h3><p>{work.details}</p><p class="image-credit">Artwork: Keng Seng Choo · Image source: {work.host}</p><a class="text-link" href={item.artworkPage || item.sourcePage}>View at {work.host}</a></figcaption></figure>;
-      })}</div>
+    <div data-collection id="galleries">
+    <div class="collection-toolbar" hidden>
+      <label class="archive-search"><span class="sr-only">Search paintings</span><input type="search" placeholder="Search title, year or gallery…" data-collection-search /><span aria-hidden="true">⌕</span></label>
+      <label class="collection-medium"><span class="sr-only">Painting medium</span><select aria-label="Painting medium" data-collection-medium><option value="all">All media</option><option value="oil">Oil on canvas</option><option value="watercolour">Watercolour</option><option value="batik">Batik</option><option value="tempera">Tempera</option><option value="ink">Ink &amp; ink wash</option></select></label>
+      <p class="collection-count" aria-live="polite">{artworks.length} paintings</p>
+    </div>
+    <section class="section" data-collection-section><div class="section-heading"><div><p class="eyebrow">EXPLORE WORKS ELSEWHERE</p><h2>On gallery websites</h2></div></div><p class="exhibition-intro">Paintings in oil, watercolour, tempera and ink wash, from village scenes and everyday life to pigeons and figures. Explore each work in more detail on the linked gallery website.</p>
+      <ExternalArtworks group="gallery" />
       <div class="gallery-directory"><div><h3>Daiichi Art</h3><p>Artist biography and a collection of paintings across different periods.</p><a href={source('daiichi').url}>Explore the artist’s collection at Daiichi Art</a></div><div><h3>ArtSafe, Singapore</h3><p>An artist profile illustrating oil paintings, including <em>Three Sisters</em> and <em>Mother and Daughter</em>.</p><a href={source('artsafe').url}>Read the ArtSafe profile</a></div><div><h3>Younie Gallery</h3><p>A bilingual biography, career history and exhibition archive.</p><a href={source('younie-artist').url}>Read the Younie Gallery profile</a></div></div>
     </section>
-    <section class="recognition-panel" id="catalogues"><p class="eyebrow">DATED ARTWORK RECORDS</p><h2>Auction archive</h2><div class="prose"><p>Public catalogues help document earlier works and their recorded media. They are historical references; catalogue estimates and results are not current valuations.</p><ul><li><a href={source('henry-1970').url}><em>Untitled</em>, 1970</a> — batik, 46 × 72 cm; recorded by Henry Butcher for its 17 April 2016 auction.</li><li><a href={source('klas-1973').url}><em>Basket Carriers</em>, 1973</a> — batik, 58 × 36 cm; recorded by KL Lifestyle Art Space for 4 February 2024.</li><li><a href={href('/articles/wells-chinese-catalogue-1980-work/')}>1980 work, Wells lot 071</a> — a Chinese-language catalogue record from 20 August 2023, with the original illustration.</li></ul></div></section>
+    <section class="section" id="catalogues" data-collection-section><div class="section-heading"><div><p class="eyebrow">EARLIER WORKS &amp; PUBLISHED CATALOGUES</p><h2>Auction archive</h2></div></div><p class="exhibition-intro">Batik, watercolour and oil paintings featured in past auctions. The dates below identify each auction listing; they do not indicate current availability. Artwork details follow the linked catalogues.</p>
+      <ExternalArtworks group="auction" />
+    </section>
+    </div>
     <SourceReferences ids={['bnm-fishing','bnm-colour','maybank-2019','daiichi','artsafe','younie-artist','henry-1970','klas-1973']} />
     <footer class="article-end"><a class="button" href={href('/works/')}>Explore the artist’s own archive</a><a class="text-link" href={href('/contact/')}>Contact</a></footer>
   </article>

@@ -60,21 +60,21 @@
     "publisher": "Daiichi Art",
     "title": "Keng Seng Choo: biography and paintings",
     "url": "https://daiichi.my/product-category/artist/malaysia/keng-seng-choo-%E9%BE%9A%E6%98%8E%E9%87%91/",
-    "checkedAt": "2026-11-27"
+    "checkedAt": "2026-11-28"
   },
   {
     "id": "artsafe",
     "publisher": "ArtSafe, Singapore",
     "title": "Keng Seng Choo: artist and artwork profile",
     "url": "https://www.artsafesg.com/keng-seng-choo",
-    "checkedAt": "2026-11-27"
+    "checkedAt": "2026-11-28"
   },
   {
     "id": "henry-1970",
     "publisher": "Henry Butcher Art Auctioneers",
     "title": "Untitled, 1970: April 2016 auction record",
-    "url": "https://www.hbart.com.my/lots/8eaaef57-ff5a-4abd-a760-1c2b434dae7c",
-    "checkedAt": "2026-11-27"
+    "url": "https://www.hbart.com.my/lots/untitled-keng-seng-choo",
+    "checkedAt": "2026-11-28"
   },
   {
     "id": "klas-1973",
@@ -152,5 +152,54 @@
     "title": "龚明金艺术简历（中文版）",
     "url": "https://www.youniegallery.com/zh/artists/keng-seng-choo-%E9%BE%9A%E6%98%8E%E9%87%91",
     "checkedAt": "2026-11-27"
+  },
+  {
+    "id": "klas-work-1",
+    "publisher": "KL Lifestyle Art Space",
+    "title": "Rubber Tappers, 1972: auction lot 54",
+    "url": "https://www.kl-lifestyle.com.my/lot-54-19-January-2025/",
+    "checkedAt": "2026-11-28"
+  },
+  {
+    "id": "klas-work-3",
+    "publisher": "KL Lifestyle Art Space",
+    "title": "Fishing Village, 1966: auction lot 41",
+    "url": "https://www.kl-lifestyle.com.my/lot-41-24-September-2023/",
+    "checkedAt": "2026-11-28"
+  },
+  {
+    "id": "klas-work-4",
+    "publisher": "KL Lifestyle Art Space",
+    "title": "Mother & Child, 1984: auction lot 44",
+    "url": "https://www.kl-lifestyle.com.my/lot-44-28-march-2021/",
+    "checkedAt": "2026-11-28"
+  },
+  {
+    "id": "klas-work-5",
+    "publisher": "KL Lifestyle Art Space",
+    "title": "Untitled, 1988: auction lot 61",
+    "url": "https://www.kl-lifestyle.com.my/lot-61-auction-xxxviiii/",
+    "checkedAt": "2026-11-28"
+  },
+  {
+    "id": "klas-work-7",
+    "publisher": "KL Lifestyle Art Space",
+    "title": "Kampung Scene, 1969: auction lot 69",
+    "url": "https://kl-lifestyle.com.my/lot-69-auction-xxxv/",
+    "checkedAt": "2026-11-28"
+  },
+  {
+    "id": "klas-artist",
+    "publisher": "KL Lifestyle Art Space",
+    "title": "Keng Seng Choo: auction archive",
+    "url": "https://www.kl-lifestyle.com.my/keng-seng-choo-b-kedah-1945/",
+    "checkedAt": "2026-11-28"
+  },
+  {
+    "id": "henry-1988",
+    "publisher": "Henry Butcher Art Auctioneers",
+    "title": "Untitled, 1988: auction lot 003",
+    "url": "https://www.hbart.com.my/lots/untitled-keng-seng-choo-3",
+    "checkedAt": "2026-11-28"
   }
 ]
