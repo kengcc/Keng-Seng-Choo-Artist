@@ -11,10 +11,10 @@
     "validate:seo": "node scripts/validate-seo.mjs"
   },
   "dependencies": {
-    "@astrojs/markdown-remark": "^7.3.2",
-    "astro": "7.3.8"
+    "@astrojs/markdown-remark": "7.3.10",
+    "astro": "7.4.13"
   },
   "devDependencies": {
-    "turndown": "^7.2.2"
+    "turndown": "7.2.5"
   }
 }
