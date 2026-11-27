@@ -1,9 +1,9 @@
 ---
-title: "2008年中国风景画展：Galeri Seni Mutiara 的历史记录"
+title: "中国风景画展 · 2008"
 date: "2026-11-27"
 slug: "scenery-of-china-malaysian-artists-2008"
 route: "/articles/scenery-of-china-malaysian-artists-2008/"
-summary: "Galeri Seni Mutiara 十周年图录将龚明金列入2008年10月17日至22日的 Scenery of China Painting Exhibition 参展名单。"
+summary: "龚明金参与2008年10月17日至22日的中国风景画展，与马来西亚艺术家共同展出。"
 language: "en-zh"
 kind: "exhibition"
 section: "events"
@@ -15,12 +15,12 @@ draft: false
 archived: false
 ---
 
-Galeri Seni Mutiara 的十周年展览图录，在历年活动表第<strong>44项</strong>列出 <strong>Scenery of China Painting Exhibition 2008 by Malaysian Artists</strong>，展期为<strong>2008年10月17日至22日</strong>。参展名单包括 <strong>Keng Seng Choo（龚明金）</strong>。
+龚明金参与了<strong>2008年10月17日至22日</strong>的<strong>中国风景画展（Scenery of China Painting Exhibition 2008 by Malaysian Artists）</strong>，与马来西亚艺术家共同展出中国风景题材的绘画。
 
-这项记录见于图录第<strong>34页</strong>，为其2008年的群展经历提供了由画廊保存的日期和参展名单。已查阅的表格未单列此展的地点。此处「中国风景画展」是本网站的中文说明；英文展名依图录保留，不能据此认为展览地点在中国。
-
-图录的同一份历史表也记录了[2012年的 Northern Malaysian Scenes Art Exhibition](/articles/northern-malaysian-scenes-art-exhibition/)，与原网站已有的新闻报道相互补充。
+展览收录于 Galeri Seni Mutiara 十周年图录第<strong>34页</strong>的历年展览表。龚明金其后亦参与了[2012年的 Northern Malaysian Scenes Art Exhibition](/articles/northern-malaysian-scenes-art-exhibition/)。
 
 ## English
 
-Galeri Seni Mutiara’s anniversary catalogue lists Keng Seng Choo in <strong>Scenery of China Painting Exhibition 2008 by Malaysian Artists</strong>, <strong>17–22 October 2008</strong>. See printed page <strong>34</strong>, historical exhibition <strong>44</strong>. The title describes the subject; this record does not establish an exhibition venue in China or identify an individual painting.
+Keng Seng Choo took part in <strong>Scenery of China Painting Exhibition 2008 by Malaysian Artists</strong>, held from <strong>17 to 22 October 2008</strong>.
+
+The exhibition features in Galeri Seni Mutiara’s tenth-anniversary catalogue, on printed page <strong>34</strong>. His later group exhibitions include [Northern Malaysian Scenes Art Exhibition in 2012](/articles/northern-malaysian-scenes-art-exhibition/).

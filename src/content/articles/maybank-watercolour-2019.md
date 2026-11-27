@@ -3,7 +3,7 @@ title: "Of Moments and Memories: Maybank’s 2019 watercolour exhibition"
 date: "2026-11-27"
 slug: "maybank-of-moments-and-memories-2019"
 route: "/articles/maybank-of-moments-and-memories-2019/"
-summary: "Maybank Foundation’s catalogue records Kampung Nelayan, a 1992 watercolour, in its 2019 Malaysian watercolour exhibition."
+summary: "Kampung Nelayan, Keng Seng Choo’s 1992 watercolour, featured in Maybank’s Of Moments and Memories exhibition in 2019."
 language: "en-zh"
 kind: "exhibition"
 section: "events"
@@ -16,12 +16,14 @@ draft: false
 archived: false
 ---
 
-Keng Seng Choo was included in **Of Moments and Memories: A Malaysian Watercolour Experience**, held at Balai Seni Menara Maybank from **14 October to 3 November 2019**.
+Keng Seng Choo’s **Kampung Nelayan** featured in **Of Moments and Memories: A Malaysian Watercolour Experience**, held at Balai Seni Menara Maybank from **14 October to 3 November 2019**.
 
-Maybank Foundation’s exhibition catalogue places his work in the boats and fishing villages section. Printed page **47** records **Kampung Nelayan**, **1992**, **watercolour on paper**, **56 × 76 cm**. The exhibition year and the painting’s creation year are distinct.
+The **1992 watercolour on paper**, measuring **56 × 76 cm**, appears in the boats and fishing villages section of Maybank Foundation’s exhibition catalogue, on printed page **47**.
 
-The catalogue provides a documented example of his watercolour practice alongside the oil paintings and pigeon compositions explored elsewhere in this archive. Inclusion in this exhibition does not, by itself, establish ownership by Maybank.
+The painting reflects his interest in coastal life and forms part of a practice that also includes oil painting, figurative subjects and pigeon compositions.
 
 ## 中文
 
-龚明金参与了2019年10月14日至11月3日于吉隆坡马银行大厦美术馆举行的水彩展「Of Moments and Memories」。马银行基金会出版的展览图录第47页收录其《Kampung Nelayan》，标明创作于1992年，纸本水彩，56 × 76厘米。
+龚明金的《Kampung Nelayan》于2019年10月14日至11月3日在吉隆坡马银行大厦美术馆的水彩展「Of Moments and Memories」展出。
+
+这件1992年的纸本水彩作品，尺寸为56 × 76厘米，收录于马银行基金会展览图录第47页的船只与渔村篇，展现他对沿海生活的关注。

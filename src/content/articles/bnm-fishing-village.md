@@ -14,14 +14,16 @@ draft: false
 archived: false
 ---
 
-Bank Negara Malaysia Museum and Art Gallery’s online **Keringat – Riwayat Pendahulu Negara** catalogue includes **Fishing Village**, a watercolour by Keng Seng Choo, in its fishing section.
+**Fishing Village**, a watercolour by Keng Seng Choo, features in Bank Negara Malaysia Museum and Art Gallery’s online **Keringat – Riwayat Pendahulu Negara** catalogue.
 
-The museum’s Malay-language commentary describes a quiet fishing village and places the painting within his watercolour and batik practice. This offers an institutional perspective on his coastal subjects, complementing the figures and pigeons in the artist’s own website archive.
+In its fishing section, the museum describes the painting’s quiet coastal setting and discusses his watercolour and batik practice. The work offers a view of his village subjects alongside the figures and pigeons featured elsewhere on this site.
 
-The catalogue’s text does not supply this painting’s creation year or dimensions. Its English title is retained here; it should not be assumed to be the same work as **Kampung Nelayan**, the 1992 watercolour in the [2019 Maybank exhibition catalogue](/articles/maybank-of-moments-and-memories-2019/).
+His fishing-village paintings also include **Kampung Nelayan**, a 1992 watercolour shown in [Maybank’s 2019 exhibition](/articles/maybank-of-moments-and-memories-2019/).
 
-Explore further [collection and gallery records](/collections/).
+Explore more [collections and galleries](/collections/).
 
 ## 中文
 
-马来西亚国家银行美术馆的线上「Keringat」图录，在渔业篇介绍龚明金的水彩画《Fishing Village》。馆方以马来文讨论画中的宁静渔村景象，并提及他的水彩与蜡染创作。网页文字未列出此画的创作年份或尺寸，因此本页保留其原有英文画名，不将它与其他渔村题材作品混为一谈。
+龚明金的水彩画《Fishing Village》收录于马来西亚国家银行美术馆的线上「Keringat – Riwayat Pendahulu Negara」图录。
+
+馆方在渔业篇介绍画中的宁静渔村景象，并讨论他的水彩与蜡染创作。渔村亦是他其他作品的题材，包括曾于[2019年马银行水彩展](/articles/maybank-of-moments-and-memories-2019/)展出的1992年作品《Kampung Nelayan》。

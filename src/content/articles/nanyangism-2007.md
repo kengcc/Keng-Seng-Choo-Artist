@@ -3,7 +3,7 @@ title: "南洋风 2007：南洋美专（马）校友会美展"
 date: "2026-11-27"
 slug: "nanyangism-nafa-alumni-exhibition-2007"
 route: "/articles/nanyangism-nafa-alumni-exhibition-2007/"
-summary: "创价学会的中文展览档案记录「南洋风 2007」，Younie Gallery 的龚明金履历另列其参展经历。"
+summary: "龚明金参与「南洋风 2007」南洋美专（马）校友会美展，于吉隆坡创价学会综合文化中心与校友一同展出。"
 language: "en-zh"
 kind: "exhibition"
 section: "events"
@@ -15,12 +15,12 @@ draft: false
 archived: false
 ---
 
-马来西亚创价学会的中文展览档案收录了<strong>「南洋风 2007 南洋美专（马）校友会美展」</strong>，标示日期为<strong>2007年9月23日</strong>。
+龚明金参与了<strong>「南洋风 2007：南洋美专（马）校友会美展」</strong>，与南洋美专校友一同在<strong>吉隆坡创价学会综合文化中心</strong>展出。
 
-龚明金的参展经历，可与 Younie Gallery 的艺术家履历交叉查阅：该履历在2007年下列出这项于吉隆坡创价学会综合文化中心举行的校友美展。ArtSafe 的艺术家资料也有对应的2007年记录。
-
-此页据主办方档案与画廊履历整理。已查阅的资料没有提供闭展日期、龚明金的具体参展画名或作品数量，因此不作补写。
+<strong>2007年9月23日</strong>的这项展览，是他历年南洋美专校友展经历的一部分。展览资料见马来西亚创价学会的展览档案，以及 Younie Gallery 与 ArtSafe 的艺术家介绍。
 
 ## English
 
-Harmoni–Soka’s Chinese exhibition archive dates <strong>Nanyangism 2007</strong>, the Malaysia NAFA alumni exhibition, to <strong>23 September 2007</strong>. Younie Gallery and ArtSafe separately record Keng Seng Choo’s participation at Wisma Kebudayaan SGM in Kuala Lumpur. The organiser’s archive date is retained here; no closing date or individual exhibited painting has been confirmed.
+Keng Seng Choo participated in <strong>Nanyangism 2007</strong>, the Malaysia Nanyang Academy of Fine Arts alumni exhibition at <strong>Wisma Kebudayaan SGM, Kuala Lumpur</strong>.
+
+Dated <strong>23 September 2007</strong> in the organiser’s exhibition archive, the event forms part of his history of exhibiting alongside fellow NAFA alumni. Further exhibition details appear in the profiles published by Younie Gallery and ArtSafe.

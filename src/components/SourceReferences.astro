@@ -1,6 +1,5 @@
 ---
 import references from '../data/references.json';
-import { formatDate } from '../lib/site';
 const { ids = [] } = Astro.props;
 const selected = ids.map((id: string) => {
   const source = references.find(source => source.id === id);
@@ -9,6 +8,6 @@ const selected = ids.map((id: string) => {
 });
 ---
 {selected.length > 0 && <aside class="reference-panel" aria-label="References">
-  <h2>Sources &amp; further reading</h2>
-  <ul>{selected.map(source => <li><a href={source.url}>{source.title}</a><span>{source.publisher} · Link checked {formatDate(source.checkedAt)}</span></li>)}</ul>
+  <h2>References &amp; further reading</h2>
+  <ul>{selected.map(source => <li><a href={source.url}>{source.title}</a><span>{source.publisher}</span></li>)}</ul>
 </aside>}
