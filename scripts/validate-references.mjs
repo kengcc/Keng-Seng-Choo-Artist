@@ -42,6 +42,8 @@ for (const work of artworks) {
   if (image?.sourceId !== work.sourceId) errors.push(`Artwork/image sources differ: ${work.id}`);
   if (new URL(work.artworkPage).protocol !== 'https:') errors.push(`Artwork link must use HTTPS: ${work.id}`);
   if (work.year !== null && (!Number.isInteger(work.year) || work.year < 1900 || work.year > new Date().getFullYear())) errors.push(`Invalid artwork year: ${work.id}`);
+  if (work.additionalSourceIds?.length || work.alternateTitles?.length) errors.push(`Only one latest public reference is allowed per painting: ${work.id}`);
+  if (work.catalogueEnd && work.catalogueEnd < work.catalogueDate) errors.push(`Invalid auction date range: ${work.id}`);
   if (work.group === 'auction' && (!work.catalogueDate || !work.lot)) errors.push(`Missing auction date/lot: ${work.id}`);
 }
 for (const filename of fs.readdirSync('src/content/articles').filter(name => name.endsWith('.md'))) {

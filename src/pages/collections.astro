@@ -28,11 +28,11 @@ const source = (id: string) => references.find(item => item.id === id)!;
       <ExternalArtworks group="gallery" />
       <div class="gallery-directory"><div><h3>Daiichi Art</h3><p>Artist biography and a collection of paintings across different periods.</p><a href={source('daiichi').url}>Explore the artist’s collection at Daiichi Art</a></div><div><h3>ArtSafe, Singapore</h3><p>An artist profile illustrating oil paintings, including <em>Three Sisters</em> and <em>Mother and Daughter</em>.</p><a href={source('artsafe').url}>Read the ArtSafe profile</a></div><div><h3>Younie Gallery</h3><p>A bilingual biography, career history and exhibition archive.</p><a href={source('younie-artist').url}>Read the Younie Gallery profile</a></div></div>
     </section>
-    <section class="section" id="catalogues" data-collection-section><div class="section-heading"><div><p class="eyebrow">EARLIER WORKS &amp; PUBLISHED CATALOGUES</p><h2>Auction archive</h2></div></div><p class="exhibition-intro">Batik, watercolour and oil paintings featured in past auctions. The dates below identify each auction listing; they do not indicate current availability. Artwork details follow the linked catalogues.</p>
+    <section class="section" id="catalogues" data-collection-section><div class="section-heading"><div><p class="eyebrow">EARLIER WORKS &amp; PUBLISHED CATALOGUES</p><h2>Auction archive</h2></div></div><p class="exhibition-intro">Batik, watercolour and oil paintings featured in past auctions. Each painting is presented with one image and its most recent catalogue reference. Auction dates are separate from the year of creation.</p>
       <ExternalArtworks group="auction" />
     </section>
     </div>
-    <SourceReferences ids={['bnm-fishing','bnm-colour','maybank-2019','daiichi','artsafe','younie-artist','henry-1970','klas-1973']} />
+    <SourceReferences ids={['bnm-fishing','bnm-colour','maybank-2019','daiichi','artsafe','younie-artist']} />
     <footer class="article-end"><a class="button" href={href('/works/')}>Explore the artist’s own archive</a><a class="text-link" href={href('/contact/')}>Contact</a></footer>
   </article>
 </Base>
