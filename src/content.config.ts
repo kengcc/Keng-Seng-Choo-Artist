@@ -18,6 +18,8 @@ const schema = z.object({
   tags: z.array(z.string()).default([]),
   draft: z.boolean().default(true),
   archived: z.boolean().default(false),
+  sourceIds: z.array(z.string()).default([]),
+  referenceImageId: z.string().optional(),
   duplicateOf: z.number().optional(),
 });
 

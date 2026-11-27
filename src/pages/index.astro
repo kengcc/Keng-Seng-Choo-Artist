@@ -9,7 +9,7 @@ import { artist } from '../data/artist';
 const hero = works.find(w => w.title === 'Mirror')!;
 const selected = [works.find(w => w.title === 'Freedom')!, works.find(w => w.title === 'Village Pigeons')!, works.find(w => w.title === 'Kampung Life')!];
 const articles = await publicArticles();
-const stories = [208,43,104].map(id => articles.find(a => a.data.wordpressId === id)!);
+const stories = [articles.find(a => a.data.slug === 'younie-when-the-south-wind-is-blowing-2026')!, articles.find(a => a.data.slug === 'maybank-of-moments-and-memories-2019')!, articles.find(a => a.data.wordpressId === 43)!];
 ---
 <Base image={hero.image}>
   <script define:vars={{ queryRoutes: Object.fromEntries(Object.entries(legacyUrls).filter(([key]) => key.startsWith('/?p=')).map(([key,value]) => [key.slice(4), href(value)])) }}>
@@ -25,6 +25,6 @@ const stories = [208,43,104].map(id => articles.find(a => a.data.wordpressId ===
 
   <section class="section wrap"><div class="section-heading"><div><p class="eyebrow">A CLOSER LOOK</p><h2>Selected artworks</h2></div><a class="text-link" href={href('/works/')}>All artworks ↗</a></div><ArtworkGrid works={selected} compact /></section>
 
-  <section class="section wrap"><div class="section-heading"><div><p class="eyebrow">WORDS &amp; PERSPECTIVES</p><h2>Exhibitions &amp; stories</h2></div><a class="text-link" href={href('/articles/')}>All articles &amp; events ↗</a></div><ArticleList entries={stories} /></section>
+  <section class="section wrap"><div class="section-heading"><div><p class="eyebrow">WORDS &amp; PERSPECTIVES</p><h2>Exhibitions &amp; stories</h2></div><a class="text-link" href={href('/articles/')}>All articles &amp; events ↗</a></div><ArticleList entries={stories} /><nav class="section-jumps" aria-label="Explore the artist archive"><a href={href('/exhibitions/')}>Explore the exhibition timeline</a><a href={href('/collections/')}>Collections &amp; galleries</a><a href={href('/interviews/')}>Press &amp; interviews</a></nav></section>
   <section class="enquiry-band"><div class="wrap enquiry-inner"><div><p class="eyebrow">CONTINUE THE CONVERSATION</p><h2>Find a work that speaks to you.</h2><p>Enquire about a painting, its details or current availability.</p></div><div class="enquiry-actions"><a class="button" href={href('/contact/')}>Artwork enquiries ↗</a><a class="text-link" href={href('/collectors/')}>A guide to collecting ↗</a></div></div></section>
 </Base>

@@ -10,6 +10,7 @@ export const artist = {
   sameAs: [
     'https://www.facebook.com/sengchoo.keng',
     'https://www.artsafesg.com/keng-seng-choo',
+    'https://www.youniegallery.com/artists/keng-seng-choo-%E9%BE%9A%E6%98%8E%E9%87%91',
     'https://daiichi.my/product-category/artist/malaysia/keng-seng-choo-%E9%BE%9A%E6%98%8E%E9%87%91/',
   ],
 };

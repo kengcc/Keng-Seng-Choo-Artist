@@ -36,7 +36,9 @@ The original VIP gallery could not be matched and is omitted. The recovered pers
 
 Keng is the family name; Seng Choo is the given name. Keep the full public name as Keng Seng Choo. The homepage groups the given name together, and the shared Person data specifies both parts explicitly.
 
-The main navigation is The Artist, Artworks, Articles & Events, and Contact. Recognition and collecting history belong on the artist page; practical collecting questions belong at `/collectors/`. Preserve existing URLs when changing labels.
+The main navigation is The Artist, Artworks, Exhibitions, Articles, Collections, and Contact. Recognition and collecting history belong on the artist page; institutional records and external gallery links belong at `/collections/`; practical collecting questions belong at `/collectors/`. Preserve existing URLs when changing labels.
+
+New summaries may use `sourceIds` from `src/data/references.json`. Check the original page, confirm the artist identity and record the check date before linking. Use `archived: false` and the actual new article publication date; historical exhibition dates belong in the event fields. `referenceImageId` selects a credited image from `reference-media.json`. The owner authorised suitable imagery from verified external reference sites on 27 November 2026; recovered private material remains excluded.
 
 Articles may include `section` (`events`, `press`, `writing`, `artworks`, or `updates`). Use `press` for reports and reviews even when they discuss exhibitions. Do not imply a contributor's writing was authored by the artist. Language labels and the archive filter use the `language` field. An original duplicate may be omitted from listings while its page and canonical link remain intact.
 

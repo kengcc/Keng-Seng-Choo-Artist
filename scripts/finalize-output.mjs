@@ -27,7 +27,7 @@ fs.writeFileSync(path.join(dist,'_redirects'),cf.join('\n')+'\n');
 fs.writeFileSync(path.join(dist,'.nojekyll'),'');
 
 const publicPages = ['/','/works/','/about/','/about/artist-statement/','/about/a-gentleman-artist/',
-  '/collections/praise-of-pigeons/','/articles/','/interviews/','/exhibitions/','/contact/','/collectors/'];
+  '/collections/','/collections/praise-of-pigeons/','/articles/','/interviews/','/exhibitions/','/contact/','/collectors/'];
 const artworkRoutes = works.map(work => {
   const label=(work.title||'archive-painting').toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'');
   return {route:`/works/${work.slug || `${label}-${work.sourcePictureId}`}/`,image:work.image};
