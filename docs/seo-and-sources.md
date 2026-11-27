@@ -35,7 +35,13 @@ After production builds, run `npm run validate` and `npm run validate:seo`. Keep
 
 When kengsengchoo.com is acquired, switch the hosting origin and base path together, regenerate canonical/entity URLs and sitemap, and preserve redirects from the GitHub Pages address where supported.
 
-## Artist name and consolidated visitor pages
+## Archive expansion — 27 November 2026
+
+The public archive now includes ten new editorial summaries with institutional, gallery, publisher and newspaper citations. New publication dates are the actual writing date; historical event dates remain separate. `sourceIds` resolve against `src/data/references.json`, and the visible citation panels match the Article structured data. The Collections & Galleries page is a CollectionPage linking to external records; it does not infer representation, current inventory, ownership from exhibition participation, or prices.
+
+The original 1985 interview retains its date and scans, with an additional Kyoto University bibliographic reference. All 15 registered reference pages, eight selected source-image URLs and two direct artwork pages returned successful responses during preparation. These are point-in-time checks, not guarantees of future availability. See `archive-expansion-2026-11-27.md` for the source and image selection record.
+
+## Artist identity and consolidated visitor pages
 
 The owner confirmed Keng as the family name and Seng Choo as the given name. Person structured data records `familyName: Keng` and `givenName: Seng Choo`; display names remain Keng Seng Choo. The homepage keeps the given name together.
 

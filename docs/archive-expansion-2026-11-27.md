@@ -36,7 +36,9 @@ Kyoto University's index independently supports the existing 1985 interview; its
 
 Expanded the homepage, archive entry points and biography milestones. All ten new articles remain searchable alongside the original 31. Reference panels show the publisher, original URL and the date the link was checked. New Article structured data includes the same visible source URLs as citations; external artwork images are not given unsupported sale offers or artwork metadata.
 
-Validation and publication results are recorded with the completed change. Source checks are point-in-time checks; external hosts can change later. New reference sites, direct artwork pages and selected image URLs returned HTTP 200 during preparation. Existing historical source links in preserved WordPress text are not represented as newly verified links.
+An isolated Chrome review covered six representative pages at 1440px and 390px, in light and dark themes (24 page/theme/width combinations). Checks passed for image loading, horizontal overflow, mobile navigation, archive search and empty results, and both the poster and original artwork viewers. Source checks are point-in-time checks; external hosts can change later. All 25 registered source, direct artwork and selected image URLs returned successful responses during preparation. Existing historical source links in preserved WordPress text are not represented as newly verified links.
+
+The dependency updates already present on both remote repositories were merged without changing their selected versions. Publication retains the existing GitHub Pages hosting and synchronises the artist and hosting source repositories.
 
 ## Maintenance
 
