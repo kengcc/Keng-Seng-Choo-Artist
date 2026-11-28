@@ -227,3 +227,6 @@ select:focus-visible,summary:focus-visible{outline:2px solid var(--green);outlin
 
 .hero .hero-signature{font-size:24px;line-height:1.4;letter-spacing:0}
 @media(max-width:700px){.hero .hero-signature{font-size:22px}}
+
+/* Keep supporting copy readable on phones as well as the main introduction. */
+@media(max-width:700px){.site-footer>div:first-child p,.footer-links,.copyright{font-size:14px}.article-row p,.work-context p:not(.eyebrow),.external-artwork p{font-size:16px}.art-number{font-size:12px}.collection-count,.viewer-bar{font-size:14px}}
