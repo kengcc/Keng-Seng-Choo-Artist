@@ -273,7 +273,3 @@ h1,h2,.career-timeline h3,.story-links strong,.external-artwork h3,.gallery-dire
 .artwork figcaption>div{min-width:0}
 .artwork figcaption a:hover{color:var(--green);text-decoration:underline;text-underline-offset:4px}
 .art-label-note{display:block;font-family:var(--sans);font-size:14px;line-height:1.6;color:var(--muted);margin-top:4px}
-.earlier-article-works{padding-block:28px;margin-bottom:30px;background:var(--soft);padding-inline:24px}
-.earlier-article-works h2{font-size:28px;margin-bottom:10px}
-.earlier-article-works p{font-size:16px;line-height:1.8}
-.earlier-article-works a{color:var(--green);text-decoration:underline;text-underline-offset:3px}
