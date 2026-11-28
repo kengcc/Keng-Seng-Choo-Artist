@@ -18,3 +18,7 @@ All 14 earlier artwork records remain, with only the two placement flags added. 
 ## Validation
 
 Production build and general, SEO and reference validators passed: 150 HTML pages, 18 artwork detail schemas, 45 article schemas, and no reported errors. Browser checks passed across 72 route/viewport/theme combinations at 320, 390, 768 and 1440 pixels, in light and dark modes. Verified 8+8 main works, full-image enlargement, no horizontal overflow, earlier article illustrations, descriptive labels, three fixed selections and a disjoint 13-work hero cycle. No-JavaScript fallback was checked. Phone and desktop screenshots were reviewed.
+
+Owner wording correction: retain the existing display names, remove “Descriptive label” from cards, hero and viewer captions, and omit title-status notes from detail pages. Internal unconfirmed-title metadata remains unchanged.
+
+Chinese-title source check: the original public NextGEN gallery records, WordPress attachment/article captions and recovered image metadata provide no confirmed Chinese artwork titles for the 18 current artwork records. The four newly selected JPEG originals also have no title/description fields. Category keywords such as 鸽子 and 人物 are not individual titles. No Chinese titles were added or translated.
