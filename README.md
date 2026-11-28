@@ -44,3 +44,7 @@ Run `npm run validate:references` to check reference and image records, or `npm 
 Original WordPress backups, SQL exports, migration reports and excluded family photographs belong outside this source repository. Original artwork and press material retain their source attribution. Do not rerun the original import over subsequent editorial changes.
 
 Deployment follows [Astro's official GitHub Pages guide](https://docs.astro.build/en/guides/deploy/github/).
+
+## Visual theme
+
+The default Gallery & Jade palette pairs warm white with jade and ochre; Midnight & Gold supplies the saved dark-mode option. Home, The Artist and Exhibitions have relevant image-led introductions. Painting grids remain compact, and artwork images are fully visible without cropping or recolouring. See [the theme rollout](docs/theme-rollout-2026-11-28.md).

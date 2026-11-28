@@ -1,11 +1,11 @@
 ---
 import media from '../data/reference-media.json';
 import { href } from '../lib/site';
-const { id, caption, alt } = Astro.props;
+const { id, caption, alt, priority = false } = Astro.props;
 const item = media.find(item => item.id === id);
 if (!item) throw new Error(`Unknown reference image: ${id}`);
 ---
 <figure class="reference-figure">
-  <a href={href(item.image)} data-viewer-src={href(item.image)} data-viewer-caption={alt || item.credit}><img src={href(item.image)} alt={alt || item.credit} width={item.width} height={item.height} loading="lazy" /></a>
+  <a href={href(item.image)} data-viewer-src={href(item.image)} data-viewer-caption={alt || item.credit}><img src={href(item.image)} alt={alt || item.credit} width={item.width} height={item.height} loading={priority ? 'eager' : 'lazy'} fetchpriority={priority ? 'high' : 'auto'} /></a>
   <figcaption>{caption || item.credit} <a href={item.sourcePage}>View the original source</a>.</figcaption>
 </figure>

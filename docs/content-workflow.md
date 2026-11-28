@@ -65,3 +65,7 @@ Owner decision, 28 November 2026: each painting on Collections must show only on
 ## Collection overview and dedicated pages
 
 `/collections/` is a compact overview with museum context and five illustrated collection links. Full artwork records belong on the source collection pages: Daiichi Art, KL Lifestyle Art Space, Henry Butcher, ArtSafe, and the smaller Wells/Davidson group. Membership, cover selection and introductory copy live in `src/data/collection-groups.json`; pages are generated at `/collections/[collection]/`. Every painting must belong to exactly one group, with one full entry and one latest source reference. Main-page cover images are navigation previews, not additional auction entries. Keep the established `/collections/#galleries` and `#catalogues` anchors. Search, medium filters and the viewer apply to the individual collection.
+
+## Approved visual theme
+
+The owner selected Gallery & Jade for default light mode and Midnight & Gold for dark mode on 28 November 2026. Keep colours in the shared CSS tokens and theme-colour metadata consistent. New visitors start in light; preserve a saved choice. Use full paintings beside headlines, a portrait-led artist introduction and a relevant featured-exhibition poster. Keep Artworks/Collections headings compact. Use relevant article previews/covers with existing credits, and keep original historical text/scans intact. Paintings must remain uncropped, proportional and unfiltered in both themes; do not apply artwork hover zoom. See `theme-rollout-2026-11-28.md`.

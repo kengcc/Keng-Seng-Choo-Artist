@@ -7,7 +7,7 @@ function applyTheme(theme: 'light' | 'dark') {
   themeToggle?.setAttribute('aria-checked', String(theme === 'dark'));
   const label = themeToggle?.querySelector('.theme-label');
   if (label) label.textContent = theme === 'dark' ? 'Dark' : 'Light';
-  document.querySelector('meta[name="theme-color"]')?.setAttribute('content', theme === 'dark' ? '#191f1d' : '#f7f5ef');
+  document.querySelector('meta[name="theme-color"]')?.setAttribute('content', theme === 'dark' ? '#17232c' : '#f8f7f3');
 }
 applyTheme(themePreference === 'dark' ? 'dark' : 'light');
 if (themeToggle) themeToggle.hidden = false;

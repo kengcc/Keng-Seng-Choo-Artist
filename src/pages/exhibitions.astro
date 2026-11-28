@@ -6,8 +6,11 @@ import { articleSection } from '../lib/editorial';
 import earlierExhibitions from '../data/earlier-exhibitions.json';
 import references from '../data/references.json';
 import SourceReferences from '../components/SourceReferences.astro';
+import ReferenceFigure from '../components/ReferenceFigure.astro';
+import { formatDate } from '../lib/site';
 const entries = (await publicArticles()).filter(p => (articleSection(p) === 'events' || (p.data.kind === 'exhibition' && p.data.eventStart)) && !p.data.duplicateOf);
 const dated = entries.filter(entry => entry.data.eventStart).sort((a,b) => b.data.eventStart!.localeCompare(a.data.eventStart!));
+const featured = dated.find(entry => entry.data.slug === 'younie-when-the-south-wind-is-blowing-2026');
 const undated = entries.filter(entry => !entry.data.eventStart);
 const years = [...new Set(dated.map(entry => entry.data.eventStart!.slice(0,4)))];
 const earlier = [...earlierExhibitions].sort((a,b) => b.year - a.year);
@@ -15,6 +18,7 @@ const source = (id: string) => references.find(source => source.id === id)!;
 ---
 <Base title="Exhibitions — A Documented History" description="Explore Keng Seng Choo’s exhibition history, with dated records from museums, galleries and organisers alongside his original website archive.">
   <section class="page-heading wrap"><p class="eyebrow">EXHIBITIONS · <span lang="zh">历年展览</span></p><h1>Art, shared with others.</h1><p>A history of exhibitions in Malaysia and abroad, bringing together museum records, gallery catalogues and the artist’s own archive.</p><p lang="zh">汇集美术馆、画廊、主办方与原网站资料，循着展览记录认识龚明金的艺术历程。</p><nav class="section-jumps" aria-label="Exhibition sections"><a href="#timeline">Dated exhibitions</a><a href="#earlier-records">Earlier exhibition records</a><a href="#announcements">More from the archive</a><a href={href('/articles/')}>Articles &amp; interviews</a></nav></section>
+  {featured && <section class="exhibition-feature wrap" aria-label="Featured exhibition"><header class="exhibition-feature-heading"><p class="eyebrow">FEATURED EXHIBITION · {featured.data.eventStart!.slice(0,4)}</p><h2>When the South Wind Is Blowing</h2><p class="feature-title-zh" lang="zh">当南风吹起…</p></header><div class="exhibition-feature-copy"><p class="feature-event-date">{formatDate(featured.data.eventStart!)}{featured.data.eventEnd && ` – ${formatDate(featured.data.eventEnd)}`}</p><p>{featured.data.eventVenue}</p><p>Keng Seng Choo joined fellow Nanyang Academy of Fine Arts graduates in this exhibition at Younie Gallery.</p><a class="button" href={href(featured.data.route)}>Explore the exhibition</a></div><ReferenceFigure id={featured.data.referenceImageId} /></section>}
   <section class="wrap exhibition-timeline" id="timeline" aria-label="Exhibition timeline">
     {years.map(year => <section class="exhibition-year"><h2>{year}</h2><ArticleList entries={dated.filter(entry => entry.data.eventStart!.startsWith(year))} /></section>)}
     <p class="archive-explanation">Selected exhibitions, ordered by event date, newest first. Article publication dates are shown separately.</p>
