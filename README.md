@@ -47,6 +47,8 @@ Deployment follows [Astro's official GitHub Pages guide](https://docs.astro.buil
 
 ## Visual theme
 
+The approved Option 2 typography uses locally hosted Cormorant Garamond and Source Sans 3-derived web subsets. See [typography details](docs/typography-rollout-2026-11-28.md) for mobile sizes, fallback fonts and delivery, and `public/fonts/README.md` for licenses and provenance.
+
 The default Gallery & Jade palette pairs warm white with jade and ochre; Midnight & Gold supplies the saved dark-mode option. Home, The Artist and Exhibitions have relevant image-led introductions. Painting grids remain compact, and artwork images are fully visible without cropping or recolouring. See [the theme rollout](docs/theme-rollout-2026-11-28.md).
 
 The homepage selects one of eight original archive paintings per arrival. “Another painting” loads the next randomly chosen work on demand, with matching source details and enlargement; no automatic slideshow or full-set preload runs. Selection lives in `src/components/HomePainting.astro` and derives its metadata from `artworks.json`.

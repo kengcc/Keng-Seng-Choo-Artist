@@ -1,5 +1,6 @@
 ---
 import '../styles/global.css';
+import FontFaces from '../components/FontFaces.astro';
 import { href } from '../lib/site';
 import { artist } from '../data/artist';
 import { structuredData } from '../lib/seo';
@@ -21,6 +22,7 @@ const nav = [['The Artist','/about/'],['Artworks','/works/'],['Exhibitions','/ex
     <meta name="description" content={description} />
     <meta name="theme-color" content="#f8f7f3" />
     <meta name="color-scheme" content="light dark" />
+    <FontFaces />
     <script is:inline>
       // Apply the saved preference before the first paint, even if storage is blocked.
       (() => {

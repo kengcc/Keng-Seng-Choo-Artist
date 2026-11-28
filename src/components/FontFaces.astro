@@ -1,0 +1,15 @@
+---
+import { href } from '../lib/site';
+const faces = [
+  ['Cormorant Garamond', 'cormorant-garamond-medium', 500, 'normal'],
+  ['Cormorant Garamond', 'cormorant-garamond-medium-italic', 500, 'italic'],
+  ['KSC Body', 'ksc-body-regular', 400, 'normal'],
+  ['KSC Body', 'ksc-body-semibold', 600, 'normal'],
+  ['KSC Body', 'ksc-body-bold', 700, 'normal'],
+  ['KSC Body', 'ksc-body-italic', 400, 'italic'],
+];
+const css = faces.map(([family, file, weight, style]) => `@font-face{font-family:"${family}";font-style:${style};font-weight:${weight};font-display:swap;src:url("${href(`/fonts/${file}.woff2`)}") format("woff2"),url("${href(`/fonts/${file}.woff`)}") format("woff")}`).join('\n');
+---
+<link rel="preload" href={href('/fonts/ksc-body-regular.woff2')} as="font" type="font/woff2" crossorigin="anonymous" />
+<link rel="preload" href={href('/fonts/cormorant-garamond-medium.woff2')} as="font" type="font/woff2" crossorigin="anonymous" />
+<style is:inline set:html={css} />
