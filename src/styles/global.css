@@ -205,14 +205,17 @@ select:focus-visible,summary:focus-visible{outline:2px solid var(--green);outlin
 .exhibition-feature{grid-template-areas:"heading image" "copy image";row-gap:0}
 .random-painting .hero-mount{height:564px;min-height:0}
 .random-painting .hero-mount img{max-height:100%;max-width:100%;width:auto;height:auto;object-fit:contain}
-.random-painting figcaption{min-height:64px}
-.painting-controls{margin-top:10px}
-.another-painting{display:inline-flex;align-items:center;gap:20px;min-height:44px;padding:9px 15px;font-family:var(--sans);font-size:14px;border:1px solid var(--line);background:var(--paper);color:var(--green)}
+.random-painting figcaption{display:flex;align-items:flex-start;gap:12px;min-height:0}
+.painting-caption{display:flex;flex:1;min-width:0;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:4px 16px}
+.painting-caption>span:first-child{font-family:var(--serif);font-size:19px}
+.painting-caption>span:last-child{font-family:var(--sans);font-size:14px;letter-spacing:0;color:var(--muted)}
+.another-painting{display:inline-flex;flex:0 0 44px;align-items:center;justify-content:center;width:44px;height:44px;padding:11px;border:1px solid var(--line);border-radius:50%;background:var(--paper);color:var(--green)}
+.another-painting svg{width:20px;height:20px}
 .another-painting:hover{border-color:var(--green);background:var(--soft)}
 .another-painting[aria-disabled=true]{cursor:wait;opacity:.7}
 .another-painting[hidden]{display:none}
 @media(max-width:1050px){.random-painting .hero-mount{height:480px}}
-@media(max-width:700px){.random-painting .hero-mount{height:auto;aspect-ratio:1 / 1.15}.random-painting .hero-mount img{max-height:100%;max-width:100%;height:100%;width:100%}.random-painting figcaption{min-height:90px}}
+@media(max-width:700px){.random-painting .hero-mount{height:auto;aspect-ratio:1 / 1.15}.random-painting .hero-mount img{max-height:100%;max-width:100%;height:100%;width:100%}}
 .exhibition-feature-heading{grid-area:heading}
 .exhibition-feature-copy{grid-area:copy}
 .exhibition-feature>.reference-figure{grid-area:image}
