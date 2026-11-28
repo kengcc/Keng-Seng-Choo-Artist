@@ -1,0 +1,89 @@
+---
+import works from '../data/artworks.json';
+import { href } from '../lib/site';
+import { artworkPath } from '../lib/seo';
+
+// Original archive images, reviewed at full resolution. Dates and media stay
+// in the artwork records; the archive's collection year is not a creation date.
+const slugs = ['mirror-330', 'freedom-328', 'village-pigeons-322',
+  'traditional-malay-lifestyle-323', 'traditional-malay-family-lifestyle-324',
+  'village-flute-playing-325', 'taste-of-autumn-331', 'colorful-life-333'];
+const paintings = slugs.map(slug => {
+  const work = works.find(work => work.slug === slug)!;
+  return { id: work.id, title: work.descriptiveLabel, image: href(work.image),
+    width: work.width, height: work.height, details: href(artworkPath(work)) };
+});
+const fallback = paintings[0];
+---
+<figure class="hero-art random-painting" id="home-painting">
+  <a class="hero-mount" href={fallback.image} data-viewer-src={fallback.image}
+    data-viewer-caption={`${fallback.title} — Keng Seng Choo. From the artist’s archive.`}
+    aria-label={`View ${fallback.title}, full size`}>
+    <noscript><style is:inline>.random-painting .hero-mount noscript{display:contents}</style><img src={fallback.image} alt={`${fallback.title} by Keng Seng Choo`} width={fallback.width} height={fallback.height} fetchpriority="high" /></noscript>
+  </a>
+  <figcaption><span><a data-painting-title href={fallback.details}>{fallback.title}</a></span><span>Artist’s archive · <a data-painting-source href={fallback.details}>Details &amp; source ↗</a></span></figcaption>
+  <div class="painting-controls"><button type="button" class="another-painting" aria-controls="home-painting" hidden>Another painting <span aria-hidden="true">↻</span></button><p class="sr-only" role="status" data-painting-status></p></div>
+</figure>
+<script define:vars={{ paintings }}>
+  // Run beside the figure, before deferred scripts: request only the chosen
+  // image, without first downloading a default or preloading the whole set.
+  (() => {
+    const figure = document.getElementById('home-painting');
+    const mount = figure.querySelector('.hero-mount');
+    const title = figure.querySelector('[data-painting-title]');
+    const source = figure.querySelector('[data-painting-source]');
+    const button = figure.querySelector('.another-painting');
+    const status = figure.querySelector('[data-painting-status]');
+    let current = -1;
+    let remaining = [];
+    let busy = false;
+    function choose() {
+      if (!remaining.length) remaining = paintings.map((_, i) => i).filter(i => i !== current);
+      return remaining.splice(Math.floor(Math.random() * remaining.length), 1)[0];
+    }
+    function caption(work) {
+      title.textContent = work.title;
+      title.href = source.href = work.details;
+      mount.href = mount.dataset.viewerSrc = work.image;
+      mount.dataset.viewerCaption = `${work.title} — Keng Seng Choo. From the artist’s archive.`;
+      mount.setAttribute('aria-label', `View ${work.title}, full size`);
+      figure.dataset.paintingId = work.id;
+    }
+    async function show(index, initial = false) {
+      if (busy) return;
+      busy = true;
+      button.setAttribute('aria-disabled', 'true');
+      button.setAttribute('aria-busy', 'true');
+      if (!initial) status.textContent = 'Loading another painting…';
+      const work = paintings[index];
+      const image = new Image(work.width, work.height);
+      image.alt = `${work.title} by Keng Seng Choo`;
+      image.fetchPriority = initial ? 'high' : 'auto';
+      image.decoding = 'async';
+      const loaded = new Promise((resolve, reject) => { image.onload = resolve; image.onerror = reject; });
+      // Initial caption is ready before the first paint; later changes commit
+      // together after decoding while the previous painting stays visible.
+      if (initial) { caption(work); mount.append(image); }
+      image.src = work.image;
+      try {
+        await loaded;
+        await image.decode();
+        if (!initial) { mount.querySelector('img')?.replaceWith(image); caption(work); }
+        current = index;
+        status.textContent = initial ? '' : `Now showing ${work.title}.`;
+      } catch {
+        if (initial) image.remove();
+        status.textContent = 'This painting could not load. Please try another painting.';
+      } finally {
+        busy = false;
+        button.setAttribute('aria-disabled', 'false');
+        button.removeAttribute('aria-busy');
+      }
+    }
+    button.hidden = false;
+    button.addEventListener('click', () => {
+      if (!busy) show(choose(), current < 0);
+    });
+    show(choose(), true);
+  })();
+</script>
