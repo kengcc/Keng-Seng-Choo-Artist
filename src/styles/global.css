@@ -255,3 +255,13 @@ h1,h2,.career-timeline h3,.story-links strong,.external-artwork h3,.gallery-dire
   .primary-nav a[aria-current]{color:var(--green);border-bottom-color:var(--green);font-weight:600}
 }
 @media(max-width:700px){.primary-nav{grid-template-columns:repeat(3,minmax(0,1fr));gap:0 7px}}
+
+/* Tonal backgrounds separate the header and credentials without rule lines. */
+:root{--header-band:#f0efe9;--credentials-band:#e9efe8}
+:root[data-theme=dark]{--header-band:#111b22;--credentials-band:#20303a}
+.site-header-band{background:var(--header-band)}
+.site-header{border-bottom:0}
+.credentials-band{background:var(--credentials-band)}
+.credentials-band .artist-credentials{border:0;padding-block:32px}
+@media(max-width:1100px){.primary-nav{border-top:0}}
+@media(max-width:700px){.credentials-band .artist-credentials{padding-block:27px}}

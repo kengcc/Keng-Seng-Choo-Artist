@@ -56,6 +56,7 @@ const nav = [['The Artist','/about/'],['Artworks','/works/'],['Exhibitions','/ex
   </head>
   <body>
     <a class="skip-link" href="#main">Skip to content</a>
+    <div class="site-header-band">
     <header class="site-header wrap">
       <a href={href('/')} class="wordmark" aria-label="Keng Seng Choo home">
         <span>KENG SENG CHOO</span><span class="wordmark-zh" lang="zh">龚明金</span>
@@ -71,6 +72,7 @@ const nav = [['The Artist','/about/'],['Artworks','/works/'],['Exhibitions','/ex
         {nav.map(([label,path]) => <a href={href(path)} aria-current={current === href(path) ? 'page' : (section === path || current.startsWith(href(path))) ? 'location' : undefined}>{label}</a>)}
       </nav>
     </header>
+    </div>
     <main id="main"><slot /></main>
     <footer class="site-footer wrap">
       <div><a href={href('/')} class="footer-name">Keng Seng Choo <span lang="zh">龚明金</span></a><p>For art, no regrets. <span lang="zh">因为艺术，无悔无憾。</span></p></div>
