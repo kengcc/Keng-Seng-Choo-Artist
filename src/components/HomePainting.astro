@@ -1,10 +1,10 @@
 ---
 import { heroWorks, fallbackHero } from '../lib/home-artworks';
 import { href } from '../lib/site';
-import { artworkPath } from '../lib/seo';
+import { artworkPath, artworkLabel } from '../lib/seo';
 
 const paintings = heroWorks.map(work => {
-  return { id: work.id, title: work.descriptiveLabel, image: href(work.image),
+  return { id: work.id, title: artworkLabel(work), image: href(work.image),
     width: work.width, height: work.height, details: href(artworkPath(work)) };
 });
 const fallback = paintings.find(work => work.id === fallbackHero.id)!;
