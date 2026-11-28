@@ -79,6 +79,9 @@ const nav = [['The Artist','/about/'],['Artworks','/works/'],['Exhibitions','/ex
       <div class="footer-links"><a href={href('/interviews/')}>Press &amp; interviews</a><a href={href('/about/artist-statement/')}>Artist’s statement</a><a href={href('/exhibitions/')}>Exhibitions</a><a href={href('/collections/')}>Collections &amp; galleries</a><a href={href('/collectors/')}>Collecting &amp; enquiries</a><a href="https://github.com/kengcc/Keng-Seng-Choo-Artist" aria-label="Keng Seng Choo Artist on GitHub">GitHub ↗</a></div>
       <p class="copyright">© {new Date().getFullYear()} Keng Seng Choo. Artwork and original materials retain their respective credits.</p>
     </footer>
+    <button class="back-to-top" type="button" aria-label="Back to top" hidden>
+      <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20V4m-7 7 7-7 7 7" /></svg>
+    </button>
     <dialog class="art-dialog" aria-label="Artwork viewer">
       <div class="viewer-bar"><span class="viewer-count"></span><button class="viewer-close" aria-label="Close artwork viewer">Close <span aria-hidden="true">×</span></button></div>
       <div class="viewer-image"><button class="viewer-prev" aria-label="Previous image">←</button><img alt="" /><button class="viewer-next" aria-label="Next image">→</button></div>

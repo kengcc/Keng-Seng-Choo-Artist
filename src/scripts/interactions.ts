@@ -109,3 +109,28 @@ if (collection) {
   search.addEventListener('input', update);
   medium.addEventListener('change', update);
 }
+
+
+// A small, on-demand shortcut for long pages; keep the artwork viewer clear.
+const backToTop = document.querySelector<HTMLButtonElement>('.back-to-top');
+if (backToTop) {
+  let scrollUpdatePending = false;
+  const updateBackToTop = () => {
+    backToTop.hidden = window.scrollY < window.innerHeight || dialog.open;
+    scrollUpdatePending = false;
+  };
+  window.addEventListener('scroll', () => {
+    if (!scrollUpdatePending) {
+      scrollUpdatePending = true;
+      requestAnimationFrame(updateBackToTop);
+    }
+  }, { passive: true });
+  window.addEventListener('resize', updateBackToTop);
+  window.addEventListener('pageshow', updateBackToTop);
+  new MutationObserver(updateBackToTop).observe(dialog, { attributes: true, attributeFilter: ['open'] });
+  backToTop.addEventListener('click', () => {
+    document.querySelector<HTMLAnchorElement>('.wordmark')?.focus({ preventScroll: true });
+    window.scrollTo({ top: 0, behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' });
+  });
+  updateBackToTop();
+}

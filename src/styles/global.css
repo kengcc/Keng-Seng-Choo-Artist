@@ -273,3 +273,10 @@ h1,h2,.career-timeline h3,.story-links strong,.external-artwork h3,.gallery-dire
 .artwork figcaption>div{min-width:0}
 .artwork figcaption a:hover{color:var(--green);text-decoration:underline;text-underline-offset:4px}
 .art-label-note{display:block;font-family:var(--sans);font-size:14px;line-height:1.6;color:var(--muted);margin-top:4px}
+
+/* On-demand shortcut for long pages, with room for phone safe areas. */
+.back-to-top{position:fixed;right:20px;bottom:20px;right:calc(20px + env(safe-area-inset-right,0px));bottom:calc(20px + env(safe-area-inset-bottom,0px));z-index:30;display:flex;align-items:center;justify-content:center;width:44px;height:44px;padding:10px;border:1px solid var(--control-line);border-radius:4px;background:var(--paper);color:var(--green);box-shadow:0 2px 10px rgba(0,0,0,.12);cursor:pointer}
+.back-to-top svg{width:22px;height:22px;flex:none}
+.back-to-top:hover{background:var(--soft);border-color:var(--green)}
+.back-to-top:focus-visible{outline:2px solid var(--green);outline-offset:4px}
+.back-to-top[hidden]{display:none}
