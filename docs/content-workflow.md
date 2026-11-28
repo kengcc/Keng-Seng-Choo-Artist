@@ -14,7 +14,7 @@ Use `/articles/your-stable-slug/` for the route and the same slug in the `slug` 
 
 Keep article publication dates distinct from exhibition dates in the body. Confirm current facts rather than treating historical statements or photograph dates as current artwork metadata. Archives should preserve their original dates.
 
-The 2016 public paintings are in `src/data/artworks.json`. Artwork titles come from the original gallery or article captions. Unknown fields remain null. Preserve each painting's `slug` when correcting its title so its established URL stays stable. Recovered collection candidates live outside this site and require an explicit selection before inclusion.
+The public paintings are in `src/data/artworks.json`. Artwork titles come from the original gallery or article captions. Unknown fields remain null. Preserve each painting's `slug` when correcting its title so its established URL stays stable. Recovered collection candidates live outside this site and require an explicit selection before inclusion.
 
 ## Preview and checks
 
@@ -69,3 +69,7 @@ Owner decision, 28 November 2026: each painting on Collections must show only on
 ## Approved visual theme
 
 The owner selected Gallery & Jade for default light mode and Midnight & Gold for dark mode on 28 November 2026. Keep colours in the shared CSS tokens and theme-colour metadata consistent. New visitors start in light; preserve a saved choice. Use full paintings beside headlines, a portrait-led artist introduction and a relevant featured-exhibition poster. Keep Artworks/Collections headings compact. Use relevant article previews/covers with existing credits, and keep original historical text/scans intact. Paintings must remain uncropped, proportional and unfiltered in both themes; do not apply artwork hover zoom. See `theme-rollout-2026-11-28.md`.
+
+## Family archive additions and homepage selection
+
+Four owner-supplied watermarked photographs were selected on 28 November 2026; their public-media provenance is in `src/data/family-artwork-media.json`. Preserve their original pixels, colour profile and watermark while stripping camera/location metadata. Unknown titles use `labelType: descriptive`, with visible clarification; unknown dates, media and dimensions remain null. `displayGroup: article-illustration` keeps the two small 2007 works out of the main grids without deleting their routes or original article. Curate the three fixed homepage works first in `src/lib/home-artworks.ts`; derive the random hero pool from the remaining main-gallery works. See `gallery-refresh-2026-11-28.md`.

@@ -1,19 +1,13 @@
 ---
-import works from '../data/artworks.json';
+import { heroWorks, fallbackHero } from '../lib/home-artworks';
 import { href } from '../lib/site';
 import { artworkPath } from '../lib/seo';
 
-// Original archive images, reviewed at full resolution. Dates and media stay
-// in the artwork records; the archive's collection year is not a creation date.
-const slugs = ['mirror-330', 'freedom-328', 'village-pigeons-322',
-  'traditional-malay-lifestyle-323', 'traditional-malay-family-lifestyle-324',
-  'village-flute-playing-325', 'taste-of-autumn-331', 'colorful-life-333'];
-const paintings = slugs.map(slug => {
-  const work = works.find(work => work.slug === slug)!;
-  return { id: work.id, title: work.descriptiveLabel, image: href(work.image),
+const paintings = heroWorks.map(work => {
+  return { id: work.id, title: work.labelType === 'descriptive' ? `${work.descriptiveLabel} (descriptive label)` : work.descriptiveLabel, image: href(work.image),
     width: work.width, height: work.height, details: href(artworkPath(work)) };
 });
-const fallback = paintings[0];
+const fallback = paintings.find(work => work.id === fallbackHero.id)!;
 ---
 <figure class="hero-art random-painting" id="home-painting">
   <div class="painting-frame">
