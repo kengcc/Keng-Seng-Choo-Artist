@@ -12,6 +12,7 @@ const fullTitle = title ? `${title} · Keng Seng Choo` : 'Keng Seng Choo 龚明�
 const canonical = Astro.site ? new URL(canonicalPath ? href(canonicalPath) : Astro.url.pathname, Astro.site) : undefined;
 const graph = Astro.site && canonical && !noindex ? structuredData({site:Astro.site, canonical, title:fullTitle, description, pageType, mainEntity, extra:extraSchema}) : undefined;
 const current = Astro.url.pathname;
+const section = current.startsWith(href('/interviews/')) ? '/articles/' : current.startsWith(href('/collectors/')) ? '/contact/' : undefined;
 const nav = [['The Artist','/about/'],['Artworks','/works/'],['Exhibitions','/exhibitions/'],['Articles','/articles/'],['Collections','/collections/'],['Contact','/contact/']];
 ---
 <!doctype html>
@@ -65,16 +66,15 @@ const nav = [['The Artist','/about/'],['Artworks','/works/'],['Exhibitions','/ex
           <svg class="theme-moon" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20 15.3A8.5 8.5 0 0 1 8.7 4 8.5 8.5 0 1 0 20 15.3Z" /></svg>
           <span class="theme-label">Light</span>
         </button>
-        <button class="menu-toggle" aria-controls="primary-nav" aria-expanded="false">Menu <span aria-hidden="true">＋</span></button>
       </div>
       <nav id="primary-nav" class="primary-nav" aria-label="Main navigation">
-        {nav.map(([label,path]) => <a href={href(path)} aria-current={current.startsWith(href(path)) ? 'page' : undefined}>{label}</a>)}
+        {nav.map(([label,path]) => <a href={href(path)} aria-current={current === href(path) ? 'page' : (section === path || current.startsWith(href(path))) ? 'location' : undefined}>{label}</a>)}
       </nav>
     </header>
     <main id="main"><slot /></main>
     <footer class="site-footer wrap">
       <div><a href={href('/')} class="footer-name">Keng Seng Choo <span lang="zh">龚明金</span></a><p>For art, no regrets. <span lang="zh">因为艺术，无悔无憾。</span></p></div>
-      <div class="footer-links"><a href={href('/interviews/')}>Press &amp; interviews</a><a href={href('/exhibitions/')}>Exhibitions</a><a href={href('/collections/')}>Collections &amp; galleries</a><a href={href('/collectors/')}>Collecting &amp; enquiries</a><a href="https://github.com/kengcc/Keng-Seng-Choo-Artist" aria-label="Keng Seng Choo Artist on GitHub">GitHub ↗</a></div>
+      <div class="footer-links"><a href={href('/interviews/')}>Press &amp; interviews</a><a href={href('/about/artist-statement/')}>Artist’s statement</a><a href={href('/exhibitions/')}>Exhibitions</a><a href={href('/collections/')}>Collections &amp; galleries</a><a href={href('/collectors/')}>Collecting &amp; enquiries</a><a href="https://github.com/kengcc/Keng-Seng-Choo-Artist" aria-label="Keng Seng Choo Artist on GitHub">GitHub ↗</a></div>
       <p class="copyright">© {new Date().getFullYear()} Keng Seng Choo. Artwork and original materials retain their respective credits.</p>
     </footer>
     <dialog class="art-dialog" aria-label="Artwork viewer">

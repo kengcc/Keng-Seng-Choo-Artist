@@ -23,19 +23,6 @@ window.addEventListener('storage', event => {
   applyTheme(themePreference === 'dark' ? 'dark' : 'light');
 });
 
-const menu = document.querySelector<HTMLButtonElement>('.menu-toggle');
-const nav = document.querySelector<HTMLElement>('#primary-nav');
-menu?.addEventListener('click', () => {
-  const expanded = menu.getAttribute('aria-expanded') === 'true';
-  menu.setAttribute('aria-expanded', String(!expanded));
-  nav?.classList.toggle('is-open', !expanded);
-});
-document.addEventListener('keydown', event => {
-  if (event.key === 'Escape' && menu?.getAttribute('aria-expanded') === 'true') {
-    menu.setAttribute('aria-expanded', 'false'); nav?.classList.remove('is-open'); menu.focus();
-  }
-});
-
 const archive = document.querySelector<HTMLElement>('[data-archive]');
 if (archive) {
   const search = archive.querySelector<HTMLInputElement>('input[type=search]')!;
