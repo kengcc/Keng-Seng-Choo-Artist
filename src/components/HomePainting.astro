@@ -16,12 +16,15 @@ const paintings = slugs.map(slug => {
 const fallback = paintings[0];
 ---
 <figure class="hero-art random-painting" id="home-painting">
+  <div class="painting-frame">
   <a class="hero-mount" href={fallback.image} data-viewer-src={fallback.image}
     data-viewer-caption={`${fallback.title} — Keng Seng Choo. From the artist’s archive.`}
     aria-label={`View ${fallback.title}, full size`}>
     <noscript><style is:inline>.random-painting .hero-mount noscript{display:contents}</style><img src={fallback.image} alt={`${fallback.title} by Keng Seng Choo`} width={fallback.width} height={fallback.height} fetchpriority="high" /></noscript>
   </a>
-  <figcaption><div class="painting-caption"><span><a data-painting-title href={fallback.details}>{fallback.title}</a></span><span>Artist’s archive · <a data-painting-source href={fallback.details}>Details &amp; source ↗</a></span></div><button type="button" class="another-painting" aria-label="Another painting" title="Show another painting" aria-controls="home-painting" hidden><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h3c5 0 7 12 12 12h3m-4-4 4 4-4 4M3 18h3c2 0 3.5-2 5-5m2-2c1.5-3 3-5 5-5h3m-4-4 4 4-4 4" /></svg></button></figcaption>
+  <button type="button" class="another-painting" aria-label="Next painting" aria-describedby="next-painting-tip" aria-controls="home-painting" hidden><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m9 5 7 7-7 7" /></svg><span class="painting-tooltip" id="next-painting-tip" role="tooltip">Next painting</span></button>
+  </div>
+  <figcaption><div class="painting-caption"><span><a data-painting-title href={fallback.details}>{fallback.title}</a></span><span>Artist’s archive · <a data-painting-source href={fallback.details}>Details &amp; source ↗</a></span></div></figcaption>
   <p class="sr-only" role="status" data-painting-status></p>
 </figure>
 <script define:vars={{ paintings }}>

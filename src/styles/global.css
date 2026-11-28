@@ -203,15 +203,19 @@ select:focus-visible,summary:focus-visible{outline:2px solid var(--green);outlin
 @media(max-width:700px){.hero{padding-block:34px 30px;gap:30px}.hero h1.artist-hero-name{font-size:clamp(44px,13.4vw,64px);margin-block:18px 22px}.hero .eyebrow{font-size:12px}.hero-lead{font-size:26px}.hero .hero-intro,.hero .hero-intro [lang=zh]{font-size:16px}.hero-mount{min-height:0;padding:20px}.hero-mount img{max-height:500px}.hero-art figcaption{display:block}.hero-art figcaption>span{display:block}.hero .hero-signature{font-size:18px}.artist-credentials{padding-block:23px;gap:18px}.artist-credentials strong,.artist-credentials span{font-size:14px}.home-artist{padding-block:32px}.artist-hero{grid-template-columns:1fr;padding-block:36px 30px;gap:28px;margin-bottom:30px}.artist-hero h1{font-size:46px}.artist-hero .profile-portrait{max-width:310px}.artist-hero-intro{font-size:17px}.exhibition-feature{grid-template-columns:1fr;gap:28px;padding:24px 20px;margin-bottom:35px}.exhibition-feature h2{font-size:33px}.exhibition-feature .reference-figure img{max-height:440px}.article-cover .reference-figure>a{padding:15px}.article-cover .reference-figure img{max-height:540px}.article-row-copy.with-preview{grid-template-columns:76px minmax(0,1fr);gap:14px}.article-thumb{height:96px;padding:6px}.article-row-copy.with-preview h2{font-size:22px}.article-meta{flex-wrap:wrap;gap:8px 16px}.primary-nav a{font-size:14px}.page-heading{padding-block:38px 30px}}
 .page-heading>.collection-count{white-space:normal;max-width:100%;line-height:1.8}
 .exhibition-feature{grid-template-areas:"heading image" "copy image";row-gap:0}
-.random-painting .hero-mount{height:564px;min-height:0}
+.painting-frame{position:relative}
+.random-painting .hero-mount{height:564px;min-height:0;padding-inline:36px}
 .random-painting .hero-mount img{max-height:100%;max-width:100%;width:auto;height:auto;object-fit:contain}
 .random-painting figcaption{display:flex;align-items:flex-start;gap:12px;min-height:0}
 .painting-caption{display:flex;flex:1;min-width:0;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:4px 16px}
 .painting-caption>span:first-child{font-family:var(--serif);font-size:19px}
 .painting-caption>span:last-child{font-family:var(--sans);font-size:14px;letter-spacing:0;color:var(--muted)}
-.another-painting{display:inline-flex;flex:0 0 44px;align-items:center;justify-content:center;width:44px;height:44px;padding:11px;border:1px solid var(--line);border-radius:50%;background:var(--paper);color:var(--green)}
-.another-painting svg{width:20px;height:20px}
-.another-painting:hover{border-color:var(--green);background:var(--soft)}
+.another-painting{display:inline-flex;position:absolute;right:-12px;top:50%;transform:translateY(-50%);align-items:center;justify-content:center;width:44px;height:44px;padding:11px;border:0;background:transparent;color:var(--green);z-index:1}
+.another-painting::before{content:"";position:absolute;inset:2px 6px;background:var(--paper);border:1px solid var(--line);border-radius:4px}
+.another-painting svg{position:relative;width:20px;height:20px}
+.another-painting:hover::before,.another-painting:focus-visible::before{border-color:var(--green);background:var(--soft)}
+.painting-tooltip{position:absolute;right:0;top:calc(100% + 6px);padding:5px 9px;background:var(--ink);color:var(--paper);font:12px/1.5 var(--sans);white-space:nowrap;opacity:0;visibility:hidden;pointer-events:none}
+.another-painting:hover .painting-tooltip,.another-painting:focus-visible .painting-tooltip{opacity:1;visibility:visible}
 .another-painting[aria-disabled=true]{cursor:wait;opacity:.7}
 .another-painting[hidden]{display:none}
 @media(max-width:1050px){.random-painting .hero-mount{height:480px}}
@@ -220,3 +224,6 @@ select:focus-visible,summary:focus-visible{outline:2px solid var(--green);outlin
 .exhibition-feature-copy{grid-area:copy}
 .exhibition-feature>.reference-figure{grid-area:image}
 @media(max-width:700px){.exhibition-feature{grid-template-areas:"heading" "image" "copy";row-gap:24px}}
+
+.hero .hero-signature{font-size:24px;line-height:1.4;letter-spacing:0}
+@media(max-width:700px){.hero .hero-signature{font-size:22px}}

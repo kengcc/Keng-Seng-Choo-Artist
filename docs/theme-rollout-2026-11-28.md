@@ -43,3 +43,9 @@ For the random painting update, the production build and all three validators pa
 ### Compact selector refinement
 
 The selector is now a small shuffle icon at the right of the painting caption, outside the image. It retains a 44-pixel touch target, accessible “Another painting” name, keyboard focus and a hover title, while removing the separate button row and reserved caption whitespace. The nearby artist introduction is headed “A life devoted to art.”; the hero retains “For art, no regrets.” The footer brand line remains.
+
+### Border arrow and tagline refinement
+
+The owner replaced the shuffle icon with a right chevron centred vertically on the painting frame’s right edge. The visible softly squared control is 32 × 40 pixels with a 44 × 44 pixel target; 36-pixel horizontal frame padding keeps the control clear of the complete image. “Next painting” appears on hover and keyboard focus. The source caption is separate. The hero tagline is now 24 pixels on desktop and 22 pixels on phones, retaining its serif italic signature treatment. No extra tagline repetitions were added.
+
+All eight works passed at four widths in both themes (64 checks), including a centred arrow clear of the image, adequate target, hover/focus tooltip, switching and viewer/source consistency. The build and general, SEO and reference validators passed. The existing cream K on jade favicon was inspected at 16, 32 and 64 pixels against light/dark surrounds and retained as a legible, simple artist initial.
